@@ -13,8 +13,9 @@
 </head>
 <body>
     <p>Results page</p>
-    <s:iterator value="testBean.searchResults" >
-        <p>1<s:property value="url"></s:property></p>
+    <s:iterator value="searchBean.searchResults" >
+        <a href="<s:property value="url"></s:property>"><p><s:property value="name"></s:property> </p></a>
+        <p><s:property value="description"></s:property> </p>
     </s:iterator>
 </body>
 </html>

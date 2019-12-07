@@ -6,12 +6,17 @@
 
 <struts>
     <package name="webserver" extends="struts-default">
+        <interceptors>
+            <interceptor name="requireLogin" class="webserver.inerceptors.LoginInterceptor"></interceptor>
+        </interceptors>
         <default-action-ref name="index" />
         <action name="index">
             <result>/index.jsp</result>
         </action>
-        <action name="searchResults" class="webserver.action.TestAction">
-            <result>/searchResults.jsp</result>
+        <action name="searchResults" class="webserver.action.SearchAction">
+            <result name="success">/searchResults.jsp</result>
+            <result name="error">/index.jsp</result>
+            <result name="login">/Login.html</result>
         </action>
     </package>
 </struts>
