@@ -1,3 +1,8 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -29,14 +34,16 @@
             </div>
         </div>
     </nav>
-    <div class="row">
-        <div class="col">
-            <div style="margin-bottom: 15px;width: 60%;"><a href="#">LINK DA PAGINA</a>
-                <p style="margin-bottom: 0px;">URL DA PAGNIA</p>
-                <p style="margin-bottom: 9px;">DESCRICAO DA PAGINA</p>
+    <s:iterator value = "serachBean.results">
+        <div class="row">
+            <div class="col">
+                <div style="margin-bottom: 15px;width: 60%;"><a href="<s:property value="url"></s:property>"><s:property value="name"></s:property></a>
+                    <p style="margin-bottom: 0px;"><s:property value="url"></s:property></p>
+                    <p style="margin-bottom: 9px;"><s:property value="description"></s:property></p>
+                </div>
             </div>
         </div>
-    </div>
+    </s:iterator>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
