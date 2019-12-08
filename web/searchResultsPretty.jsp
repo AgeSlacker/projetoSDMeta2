@@ -34,7 +34,8 @@
             </div>
         </div>
     </nav>
-    <s:iterator value = "serachBean.results">
+    <div class="container" style="max-width: 800px">
+    <s:iterator value="searchBean.searchResults">
         <div class="row">
             <div class="col">
                 <div style="margin-bottom: 15px;width: 60%;"><a href="<s:property value="url"></s:property>"><s:property value="name"></s:property></a>
@@ -44,6 +45,7 @@
             </div>
         </div>
     </s:iterator>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
