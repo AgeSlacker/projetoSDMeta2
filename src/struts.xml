@@ -9,15 +9,11 @@
     <package name="webserver" extends="struts-default">
         <interceptors>
             <interceptor name="requireLogin" class="webserver.interceptors.LoginInterceptor"></interceptor>
-            <interceptor-stack name="appDefault">
-                <interceptor-ref name="defaultStack">
-                    <param name="exception.logEnabled">true</param>
-                    <param name="exception.logLevel">ERROR</param>
-                    <param name="params.excludeParams">admin,Admin,setAdmin</param>
-                </interceptor-ref>
+            <interceptor-stack name="requireLoginStack">
+                <interceptor-ref name="requireLogin"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
             </interceptor-stack>
         </interceptors>
-        <default-interceptor-ref name="appDefault"></default-interceptor-ref>
         <default-action-ref name="index" />
         <action name="index">
             <result>/index.jsp</result>
@@ -25,12 +21,19 @@
         <action name="searchResults" class="webserver.action.SearchAction">
             <result name="success">/searchResults.jsp</result>
             <result name="error">/index.jsp</result>
+            <result name="logout">/index.jsp</result>
             <result name="login">/login.jsp</result>
         </action>
-
         <action name="login" class="webserver.action.LoginAction">
             <result name="success">/index.jsp</result>
             <result name="error">/login.jsp</result>
+        </action>
+        <action name="logout" class="webserver.action.LoginAction" method="logout">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="register" class="webserver.action.RegisterAction">
+            <result name="success">/login.jsp</result>
+            <result name="error">/register.jsp</result>
         </action>
     </package>
 </struts>
