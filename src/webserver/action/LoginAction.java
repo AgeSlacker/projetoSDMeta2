@@ -2,7 +2,6 @@ package webserver.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
-import sun.rmi.runtime.Log;
 import webserver.model.LoginBean;
 
 import java.rmi.RemoteException;
@@ -13,6 +12,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     @Override
     public String execute() throws Exception {
+        System.out.println("Execute method");
         switch (getLoginBean().doLogin()) {
             case SUCCESS:
                 session.put("logged",true);
@@ -23,6 +23,14 @@ public class LoginAction extends ActionSupport implements SessionAware {
             case ER_WRONG_PASS:
                 session.put("wrongPassError",true);
                 return ERROR;
+        }
+        return SUCCESS;
+    }
+
+    public String logout(){
+        System.out.printf("Logiing out");
+        if(session.containsKey("logged") && (boolean)session.get("logged") == true){
+            session.clear();
         }
         return SUCCESS;
     }

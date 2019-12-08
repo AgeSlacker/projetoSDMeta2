@@ -11,6 +11,9 @@
                             <li class="nav-item" role="presentation">
                                 Welcome <c:out value="${loginBean.name}"/>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="<s:url action="logout"/>">Logout</a>
+                            </li>
                         </c:when>
                         <c:otherwise>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="login.jsp">Login</a></li>
