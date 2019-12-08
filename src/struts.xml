@@ -8,8 +8,16 @@
     <constant name="struts.ui.theme" value="simple"></constant>
     <package name="webserver" extends="struts-default">
         <interceptors>
-            <interceptor name="requireLogin" class="webserver.inerceptors.LoginInterceptor"></interceptor>
+            <interceptor name="requireLogin" class="webserver.interceptors.LoginInterceptor"></interceptor>
+            <interceptor-stack name="appDefault">
+                <interceptor-ref name="defaultStack">
+                    <param name="exception.logEnabled">true</param>
+                    <param name="exception.logLevel">ERROR</param>
+                    <param name="params.excludeParams">admin,Admin,setAdmin</param>
+                </interceptor-ref>
+            </interceptor-stack>
         </interceptors>
+        <default-interceptor-ref name="appDefault"></default-interceptor-ref>
         <default-action-ref name="index" />
         <action name="index">
             <result>/index.jsp</result>

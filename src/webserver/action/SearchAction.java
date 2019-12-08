@@ -11,6 +11,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
     @Override
     public String execute() throws Exception {
         if (getSearchBean().getSearchTerms().isEmpty()){
+            System.out.println(session.toString());
             this.session.put("emptySearch",true);
             this.session.put("name","TEST");
             System.out.println("returning error");

@@ -1,4 +1,4 @@
-package webserver.inerceptors;
+package webserver.interceptors;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionInvocation;

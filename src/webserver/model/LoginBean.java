@@ -1,5 +1,6 @@
 package webserver.model;
 
+import rmiserver.IClient;
 import rmiserver.IServer;
 import rmiserver.PacketBuilder;
 import webserver.Configs;
@@ -8,13 +9,17 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.server.RemoteObject;
+import java.rmi.server.UnicastRemoteObject;
 
-public class LoginBean {
+public class LoginBean extends UnicastRemoteObject implements IClient{
     private IServer server;
     private String name;
     private String password;
+    private boolean isAdmin;
 
-    public LoginBean(){
+    public LoginBean() throws RemoteException {
+        super();
         try {
             server = (IServer) Naming.lookup(Configs.RMIServerLocation);
         } catch (RemoteException e) {
@@ -38,7 +43,26 @@ public class LoginBean {
         this.name = name;
     }
 
+    public boolean getAdmin() {
+        return isAdmin;
+    }
+
     public PacketBuilder.RESULT doLogin() throws RemoteException {
-        return server.login(null,name,password);
+        return server.login(this,name,password);
+    }
+
+    @Override
+    public void printMessage(String message) throws RemoteException {
+        System.out.println(message);
+    }
+
+    @Override
+    public boolean isAlive() throws RemoteException {
+        return true;
+    }
+
+    @Override
+    public void setAdmin() throws RemoteException {
+        System.out.println("Test");
     }
 }

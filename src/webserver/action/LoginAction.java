@@ -5,6 +5,7 @@ import org.apache.struts2.interceptor.SessionAware;
 import sun.rmi.runtime.Log;
 import webserver.model.LoginBean;
 
+import java.rmi.RemoteException;
 import java.util.Map;
 
 public class LoginAction extends ActionSupport implements SessionAware {
@@ -33,7 +34,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
     public LoginBean getLoginBean(){
         if (!session.containsKey("loginBean")){
-            this.setLoginBean(new LoginBean());
+            try {
+                this.setLoginBean(new LoginBean());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
         return (LoginBean) session.get("loginBean");
     }
