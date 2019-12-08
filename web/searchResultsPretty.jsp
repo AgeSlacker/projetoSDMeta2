@@ -24,9 +24,20 @@
         <div class="container"><a class="navbar-brand" style = "font-family: 'Cinzel', serif;" href="index.jsp">UCBUSCA</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
-                <form class="form-inline mr-auto" target="_self">
-                    <div class="form-group"><input class="border border-dark form-control search-field" type="search" id="search-field" name="search" style="border-radius:20px;width: 350px;"><label for="search-field"><i class="fa fa-search" style="font-size: 24px;margin-top: -8px;margin-left: 10px;color: rgb(0,0,0);"></i></label></div>
-                </form>
+                <s:form cssClass="form-inline mr-auto" action="searchResults" method="POST">
+                    <div class="form-group">
+                        <s:textfield cssClass="border border-dark form-control search-field"
+                                     cssStyle="border-radius:20px;width: 350px;"
+                                     name="searchBean.searchTerms"
+                                     id="search-field"
+                        />
+                    </div>
+                    <i class="fa fa-search" style="font-size: 24px;margin-top: -8px;margin-left: 10px;color: rgb(0,0,0);"></i>
+                </s:form>
+            </div>
+                <c:if test="${session.emptySearch == true}">
+                    <p>Empty search...</p>
+                </c:if>
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="login.jsp">Login</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="register.jsp">Register</a></li>

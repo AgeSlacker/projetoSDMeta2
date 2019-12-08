@@ -10,6 +10,7 @@ public class SearchAction extends ActionSupport implements SessionAware {
     private Map<String, Object> session;
     @Override
     public String execute() throws Exception {
+        session.remove("emptySearch");
         if (getSearchBean().getSearchTerms().isEmpty()){
             System.out.println(session.toString());
             this.session.put("emptySearch",true);
