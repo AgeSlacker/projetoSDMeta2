@@ -1,3 +1,8 @@
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -20,7 +25,7 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Login.html">Login</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.jsp">Login</a></li>
                 </ul>
             </div>
         </div>
@@ -29,7 +34,7 @@
         <h1 style="margin-top: 58px;">Registrar</h1>
         <div class="form-group"><input placeholder="Usuário" type="text" style="margin-top: 44px;"></div>
         <div class="form-group"><input placeholder="Senha" type="password" style="margin-top: 9px;"></div>
-        <div class="form-group"><button class="btn btn-primary" type="button" style="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;">Registrar</button></div><a href="Login.html" style="color: rgb(0,0,0);">Já Possui Conta?</a></div>
+        <div class="form-group"><button class="btn btn-primary" type="button" style="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;">Registrar</button></div><a href="login.jsp" style="color: rgb(0,0,0);">Já Possui Conta?</a></div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

@@ -17,16 +17,7 @@
 </head>
 
 <body style="overflow-x:hidden">
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Login.html">Login</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="Register.html">Registrar</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<%@include file="navbar.jsp"%>
     <div class="row" style="margin-top:20px;">
         <div class="col">
             <div class="text-center"><img class="img-fluid" src="assets/img/ucbusca.png" style="width: 800px;margin-top: 8px;"></div>
