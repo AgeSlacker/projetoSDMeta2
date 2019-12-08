@@ -29,16 +29,16 @@
             </div>
         </div>
     </nav>
-    <div class="text-center border rounded-0 border-dark form-style-8" style="background-color: #ffffff;width: 298px;height: 430px;margin: auto;margin-top: 50px;">
+    <div class="text-center border rounded-0 border-dark form-style-8" style="background-color: #ffffff;width: 298px;margin: auto;margin-top: 50px;">
         <h1 style="margin-top: 58px;">Login</h1>
         <s:form action="login" method="POST">
         <div class="form-group">
             <s:textfield name="loginBean.name" placeholder="Usuário" cssStyle="margin-top: 44px;" />
-            <c:if test="${session.noUserError == true}">No user with that <c:out value="${loginBean.name}"/> username</c:if>
+            <c:if test="${session.noUserError == true}"><small class="text-danger">No user with <c:out value="${loginBean.name}"/> as username</small></c:if>
         </div>
         <div class="form-group">
             <s:password name="loginBean.password" placeholder="Senha" cssStyle="margin-top: 9px;"/>
-            <c:if test="${session.wrongPassError == true}">Wrong pass</c:if>
+            <c:if test="${session.wrongPassError == true}"><small class="text-danger">Wrong Password</small></c:if>
         </div>
         <div class="form-group">
             <s:submit cssClass="btn btn-primary" cssStyle="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;" value="Entrar"/>
