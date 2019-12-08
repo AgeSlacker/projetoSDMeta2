@@ -9,7 +9,7 @@
                     <c:choose>
                         <c:when test="${session.logged == true}">
                             <li class="nav-item" role="presentation">
-                                Welcome <c:out value="${loginBean.name}"/>
+                                <p class="navbar-brand" style = "font-family: 'Cinzel', serif;">Welcome <c:out value="${loginBean.name}"/></p>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" href="<s:url action="logout"/>">Logout</a>

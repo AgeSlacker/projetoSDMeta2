@@ -30,11 +30,24 @@
             </div>
         </div>
     </nav>
-    <div class="text-center border rounded-0 border-dark form-style-8" style="background-color: #ffffff;width: 298px;height: 430px;margin: auto;margin-top: 50px;">
+    <s:form action="register" method="POST">
+    <div class="text-center border rounded-0 border-dark form-style-8" style="background-color: #ffffff;width: 298px;margin: auto;margin-top: 50px;">
         <h1 style="margin-top: 58px;">Registrar</h1>
-        <div class="form-group"><input placeholder="Usuário" type="text" style="margin-top: 44px;"></div>
-        <div class="form-group"><input placeholder="Senha" type="password" style="margin-top: 9px;"></div>
-        <div class="form-group"><button class="btn btn-primary" type="button" style="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;">Registrar</button></div><a href="login.jsp" style="color: rgb(0,0,0);">Já Possui Conta?</a></div>
+        <div class="form-group">
+            <s:textfield name="registerBean.name" cssStyle="margin-top: 44px;"></s:textfield>
+            <c:if test="${session.errorUserExists}">
+                <small class="text-danger">Username not available.</small>
+            </c:if>
+        </div>
+        <div class="form-group">
+            <s:password name="registerBean.password" cssStyle="margin-top: 9px;"></s:password>
+        </div>
+        <div class="form-group">
+            <s:submit cssStyle="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;" cssClass="btn btn-primary" value="Registar"></s:submit>
+        </div>
+        <a href="<s:url action="login"/>" style="color: rgb(0,0,0);">Já Possui Conta?</a>
+    </div>
+    </s:form>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

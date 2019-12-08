@@ -31,5 +31,9 @@
         <action name="logout" class="webserver.action.LoginAction" method="logout">
             <result name="success">/index.jsp</result>
         </action>
+        <action name="register" class="webserver.action.RegisterAction">
+            <result name="success">/login.jsp</result>
+            <result name="error">/register.jsp</result>
+        </action>
     </package>
 </struts>

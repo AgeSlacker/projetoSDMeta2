@@ -13,6 +13,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
     @Override
     public String execute() throws Exception {
         System.out.println("Execute method");
+        session.remove("noUserError");
+        session.remove("wrongPassError");
         switch (getLoginBean().doLogin()) {
             case SUCCESS:
                 session.put("logged",true);
@@ -23,8 +25,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
             case ER_WRONG_PASS:
                 session.put("wrongPassError",true);
                 return ERROR;
+            default:
+                return ERROR;
         }
-        return SUCCESS;
     }
 
     public String logout(){
