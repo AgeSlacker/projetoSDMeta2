@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md border-dark border rounded-0 navigation-clean-search" style="margin-bottom: 13px;">
+    <nav class="navbar navbar-light navbar-expand-md border-dark border rounded-0 navigation-clean-search" style="margin-bottom: 20px;">
         <div class="container"><a class="navbar-brand" style = "font-family: 'Cinzel', serif;" href="index.jsp">UCBUSCA</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
@@ -45,11 +45,11 @@
             </div>
         </div>
     </nav>
-    <div class="container" style="max-width: 800px">
+    <div style="margin-left: 50px; max-width: 800px">
     <s:iterator value="searchBean.searchResults">
         <div class="row">
             <div class="col">
-                <div style="margin-bottom: 15px;width: 60%;"><a href="<s:property value="url"></s:property>"><s:property value="name"></s:property></a>
+                <div style="margin-bottom: 20px;width: 60%;"><a href="<s:property value="url"></s:property>"><s:property value="name"></s:property></a>
                     <p style="margin-bottom: 0px;"><s:property value="url"></s:property></p>
                     <p style="margin-bottom: 9px;"><s:property value="description"></s:property></p>
                 </div>
