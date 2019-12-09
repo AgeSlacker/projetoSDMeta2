@@ -36,7 +36,7 @@
             <c:choose>
                 <c:when test="${session.logged == true}">
                     <li class="nav-item" role="presentation">
-                        <p class="navbar-brand" style = "font-family: 'Cinzel', serif;">Welcome <c:out value="${loginBean.name}"/></p>
+                        <p class="navbar-text" style = "">Welcome <c:out value="${loginBean.name}"/></p>
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
                     <li class="nav-item" role="presentation">
