@@ -16,6 +16,7 @@
                             </li>
                         </c:when>
                         <c:otherwise>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="linkedPages.jsp">Search by link</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="login.jsp">Login</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="register.jsp">Registrar</a></li>
                         </c:otherwise>

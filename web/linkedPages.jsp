@@ -19,14 +19,12 @@
 
 <body class="text-center">
     <s:form action="getLinkedPages" method="POST">
-    <s:textfield name="linkedBean.link" placeholder="url"></s:textfield>
+    <s:textfield name="linkedPagesBean.link" placeholder="url"></s:textfield>
     <s:submit></s:submit>
     </s:form>
-    <s:iterator value="linkedBean.linkList">
-        <s:property value="url"></s:property>
-        <s:property value="name"></s:property>
-        <s:property value="description"></s:property>
-    </s:iterator>
+    <c:forEach items="${linkedPagesBean.linkList}" var="link">
+        <c:out value="${link}"></c:out>
+    </c:forEach>
 </body>
 
 </html>
