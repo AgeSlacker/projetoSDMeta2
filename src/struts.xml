@@ -44,5 +44,8 @@
             <result name="success">/userHistory.jsp</result>
             <result name="login">/login.jsp</result>
         </action>
+        <action name="enterAdminPage">
+            <result name="success">/adminPage.jsp</result>
+        </action>
     </package>
 </struts>
