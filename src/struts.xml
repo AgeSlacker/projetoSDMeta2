@@ -35,7 +35,7 @@
             <result name="success">/login.jsp</result>
             <result name="error">/register.jsp</result>
         </action>
-        <action name="getLinkedPages">
+        <action name="getLinkedPages" class="webserver.action.LinkedPagesAction">
             <result>/linkedPages.jsp</result>
         </action>
     </package>

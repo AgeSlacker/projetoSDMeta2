@@ -5,7 +5,9 @@ import webserver.model.LinkedPagesBean;
 public class LinkedPagesAction extends BaseAction {
     @Override
     public String execute() throws Exception {
-        return super.execute();
+        System.out.println("Linked Pages Action executing");
+        getLinkedPagesBean().setLinkList();
+        return SUCCESS;
     }
 
     public void setLinkedPagesBean(LinkedPagesBean linkedPagesBean){
