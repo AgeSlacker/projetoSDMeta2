@@ -9,12 +9,11 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.rmi.server.RemoteObject;
 import java.rmi.server.UnicastRemoteObject;
 
 public class LoginBean extends UnicastRemoteObject implements IClient{
     private IServer server;
-    private String name;
+    private String name = null;
     private String password;
     private boolean isAdmin;
 

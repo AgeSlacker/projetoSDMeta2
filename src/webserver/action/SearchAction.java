@@ -2,6 +2,7 @@ package webserver.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
+import webserver.model.LoginBean;
 import webserver.model.SearchBean;
 
 import java.util.Map;
@@ -18,7 +19,8 @@ public class SearchAction extends ActionSupport implements SessionAware {
             System.out.println("returning error");
             return ERROR;
         }
-        getSearchBean().setSearchResults();
+        String user = ((LoginBean)session.get("loginBean")).getName();
+        getSearchBean().setSearchResults(user);
         return SUCCESS;
     }
     @Override

@@ -14,6 +14,9 @@
                             <li class="nav-item" role="presentation">
                                 <a class="nav-link" href="<s:url action="logout"/>">Logout</a>
                             </li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="<s:url action="getUserHistory"></s:url> ">User History</a>
+                            </li>
                         </c:when>
                         <c:otherwise>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="linkedPages.jsp">Search by link</a></li>
@@ -21,7 +24,6 @@
                             <li class="nav-item" role="presentation"><a class="nav-link" href="register.jsp">Registrar</a></li>
                         </c:otherwise>
                     </c:choose>
-
             </ul>
         </div>
     </div>

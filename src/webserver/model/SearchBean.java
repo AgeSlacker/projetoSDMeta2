@@ -36,9 +36,9 @@ public class SearchBean {
         System.out.println("Setting search terms to " + searchTerms);
     }
 
-    public void setSearchResults() throws RemoteException {
+    public void setSearchResults(String user) throws RemoteException {
         System.out.println("Setting search results");
-        this.searchResults = server.search(null, searchTerms.split(" "), null, 0);// TODO set logged user
+        this.searchResults = server.search(null, searchTerms.split(" "), user, 0);// TODO set logged user
     }
 
     public ArrayList<Page> getSearchResults() throws RemoteException { // TODO am i going to throw all exceptions?
