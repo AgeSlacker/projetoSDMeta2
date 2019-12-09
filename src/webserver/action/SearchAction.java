@@ -19,7 +19,8 @@ public class SearchAction extends ActionSupport implements SessionAware {
             System.out.println("returning error");
             return ERROR;
         }
-        String user = ((LoginBean)session.get("loginBean")).getName();
+        LoginBean loginBean = (LoginBean)session.get("loginBean");
+        String user = loginBean != null ? loginBean.getName() : null;
         getSearchBean().setSearchResults(user);
         return SUCCESS;
     }
