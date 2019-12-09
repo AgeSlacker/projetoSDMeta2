@@ -18,29 +18,16 @@
 </head>
 
 <body class="text-center">
-
-<c:import url="navbar.jsp"></c:import>
-
-<nav class="navbar navbar-light navbar-expand-md border-dark border rounded-0 navigation-clean">
-    <div class="container"><a class="navbar-brand" style = "font-family: 'Cinzel', serif;" href="index.jsp">UCBUSCA</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse"
-             id="navcol-1">
-            <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
-                <li class="nav-item" role="presentation"><a class="nav-link" href="register.jsp">Registrar</a></li>
-            </ul>
-        </div>
+    <%@include file="navbar.jsp"%>
+    <div class="text-left border rounded-0 border-dark form-style-8"
+         style="background-color: #ffffff;max-width: 350px;margin: auto;margin-top: 50px;">
+        <s:iterator value="userHistoryBean.list">
+            <p><s:date name="date" ></s:date> | <s:property value="query"></s:property></p>
+            <br>
+        </s:iterator>
     </div>
-</nav>
-<div class="text-left border rounded-0 border-dark form-style-8"
-     style="background-color: #ffffff;max-width: 350px;margin: auto;margin-top: 50px;">
-    <s:iterator value="userHistoryBean.list">
-        <p><s:date name="date" ></s:date> | <s:property value="query"></s:property></p>
-        <br>
-    </s:iterator>
-</div>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

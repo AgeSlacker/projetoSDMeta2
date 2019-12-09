@@ -39,8 +39,31 @@
                     <p>Empty search...</p>
                 </c:if>
                 <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.jsp">Login</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="register.jsp">Register</a></li>
+                    <c:choose>
+                        <c:when test="${session.logged == true}">
+                            <li class="nav-item" role="presentation">
+                                <p class="navbar-brand" style = "font-family: 'Cinzel', serif;">Welcome <c:out value="${loginBean.name}"/></p>
+                            </li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="<s:url action="getUserHistory"></s:url> ">Histórico</a>
+                            </li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="linkedPages.jsp">Páginas Linkadas</a></li>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" href="<s:url action="logout"/>">Logout</a>
+                            </li>
+                            <c:choose >
+                                <c:when test = "${loginBean.admin}">
+                                    <li class="nav-item" role="presentation"><a class="nav-link" href="adminPage.jsp">Página Administrador</a></li>
+                                </c:when>
+                            </c:choose>
+                        </c:when>
+                        <c:otherwise>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="login.jsp">Login</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="register.jsp">Registrar</a></li>
+                        </c:otherwise>
+                    </c:choose>
                 </ul>
             </div>
         </div>
