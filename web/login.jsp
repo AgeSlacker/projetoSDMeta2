@@ -32,7 +32,7 @@
             <c:if test="${session.wrongPassError == true}"><small class="text-danger">Wrong Password</small></c:if>
         </div>
         <div class="form-group">
-            <s:submit cssClass="btn btn-primary" cssStyle="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;" value="Entrar"/>
+            <s:submit cssClass="btn btn-dark" cssStyle="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;" value="Entrar"/>
         </div>
         <a href="register.jsp" style="color: rgb(0,0,0);">Ainda não Possui Conta?</a>
     </div>
