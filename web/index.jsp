@@ -18,6 +18,7 @@
 
 <body style="overflow-x:hidden">
 <%@include file="navbar.jsp"%>
+<p></p>
     <div class="row" style="margin-top:20px;">
         <div class="col">
             <div class="text-center"><img class="img-fluid" src="assets/img/ucbusca.png" style="width: 800px;margin-top: 8px;"></div>
