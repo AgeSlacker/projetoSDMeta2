@@ -1,20 +1,20 @@
 package webserver.action;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.interceptor.SessionAware;
+import webserver.model.LinkedPagesBean;
 
-import java.util.Map;
-
-public class LinkedPagesAction extends ActionSupport implements SessionAware {
+public class LinkedPagesAction extends BaseAction {
     @Override
     public String execute() throws Exception {
         return super.execute();
     }
 
-    @Override
-    public void setSession(Map<String, Object> map) {
-
+    public void setLinkedPagesBean(LinkedPagesBean linkedPagesBean){
+        session.put("linkedPagesBean",linkedPagesBean);
     }
 
-
+    public LinkedPagesBean getLinkedPagesBean(){
+        if (!session.containsKey("linkedPagesBean"))
+            setLinkedPagesBean(new LinkedPagesBean(getServer()));
+        return (LinkedPagesBean) session.get("linkedPagesBean");
+    }
 }

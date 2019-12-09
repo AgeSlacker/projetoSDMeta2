@@ -43,8 +43,7 @@ public class SearchBean {
 
     public ArrayList<Page> getSearchResults() throws RemoteException { // TODO am i going to throw all exceptions?
         System.out.println("Getting search results");
-        for (Page p :
-                searchResults) {
+        for (Page p : searchResults) {
             System.out.println(p.getName() + p.getUrl() + p.getDescription());
         }
         return this.searchResults;
