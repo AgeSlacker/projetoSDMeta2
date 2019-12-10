@@ -11,13 +11,13 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class LoginBean extends UnicastRemoteObject implements IClient{
+public class ClientBean extends UnicastRemoteObject implements IClient {
     private IServer server;
     private String name = null;
-    private String password;
-    private boolean isAdmin;
+    private String password = null;
+    private boolean isAdmin = false;
 
-    public LoginBean() throws RemoteException {
+    public ClientBean() throws RemoteException {
         super();
         try {
             server = (IServer) Naming.lookup(Configs.RMIServerLocation);
@@ -47,7 +47,7 @@ public class LoginBean extends UnicastRemoteObject implements IClient{
     }
 
     public PacketBuilder.RESULT doLogin() throws RemoteException {
-        return server.login(this,name,password);
+        return server.login(this, name, password);
     }
 
     @Override
@@ -62,6 +62,6 @@ public class LoginBean extends UnicastRemoteObject implements IClient{
 
     @Override
     public void setAdmin() throws RemoteException {
-        System.out.println("Test");
+        this.isAdmin = true;
     }
 }

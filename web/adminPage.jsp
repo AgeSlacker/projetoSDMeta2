@@ -19,18 +19,7 @@
 </head>
 
 <body class="text-sm-center">
-    <nav class="navbar navbar-light navbar-expand-md border-dark border rounded-0 navigation-clean">
-        <div class="container"><a class="navbar-brand" style = "font-family: 'Cinzel', serif;" href="index.jsp">UCBUSCA</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="#">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<%@include file="navbar.jsp"%>
     <div>
         <div class="container">
             <div class="row">

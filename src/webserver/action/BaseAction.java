@@ -4,8 +4,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.interceptor.SessionAware;
 import rmiserver.IServer;
 import webserver.Configs;
+import webserver.model.ClientBean;
 
-import javax.management.remote.rmi.RMIServer;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -20,15 +20,15 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
         this.session = session;
     }
 
-    public void setServer(IServer server){
-        session.put("server",server);
+    public void setServer(IServer server) {
+        session.put("server", server);
     }
 
-    public IServer getServer(){
-        if(!session.containsKey("server")){
+    public IServer getServer() {
+        if (!session.containsKey("server")) {
             try {
                 IServer server = (IServer) Naming.lookup(Configs.RMIServerLocation);
-                session.put("server",server);
+                session.put("server", server);
             } catch (NotBoundException e) {
                 e.printStackTrace();
             } catch (MalformedURLException e) {
@@ -37,6 +37,21 @@ public abstract class BaseAction extends ActionSupport implements SessionAware {
                 e.printStackTrace();
             }
         }
-        return (IServer)session.get("server");
+        return (IServer) session.get("server");
+    }
+
+    public ClientBean getClientBean() {
+        if (!session.containsKey("clientBean")) {
+            try {
+                this.setClientBean(new ClientBean());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        return (ClientBean) session.get("clientBean");
+    }
+
+    public void setClientBean(ClientBean clientBean) {
+        this.session.put("clientBean", clientBean);
     }
 }

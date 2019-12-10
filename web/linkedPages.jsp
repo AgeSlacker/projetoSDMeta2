@@ -19,8 +19,11 @@
 </head>
 
 <body class="text-center">
-<nav class="navbar navbar-light navbar-expand-md border-dark border rounded-0 navigation-clean-search" style="margin-bottom: 20px;">
-    <div class="container"><a class="navbar-brand" style = "font-family: 'Cinzel', serif;" href="index.jsp">UCBUSCA</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+<nav class="navbar navbar-light navbar-expand-md border-dark border rounded-0 navigation-clean-search"
+     style="margin-bottom: 20px;">
+    <div class="container"><a class="navbar-brand" style="font-family: 'Cinzel', serif;" href="index.jsp">UCBUSCA</a>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
+                class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <s:form cssClass="form-inline mr-auto" action="getLinkedPages" method="POST">
                 <div class="form-group">
@@ -29,26 +32,29 @@
                                  name="linkedPagesBean.link" placeholder="url"
                     />
                 </div>
-                <i class="fa fa-search" style="font-size: 24px;margin-top: -8px;margin-left: 10px;color: rgb(0,0,0);"></i>
+                <i class="fa fa-search"
+                   style="font-size: 24px;margin-top: -8px;margin-left: 10px;color: rgb(0,0,0);"></i>
             </s:form>
         </div>
         <ul class="nav navbar-nav">
             <c:choose>
                 <c:when test="${session.logged == true}">
                     <li class="nav-item" role="presentation">
-                        <p class="navbar-text" style = "">Welcome <c:out value="${loginBean.name}"/></p>
+                        <p class="navbar-text" style="">Welcome <c:out value="${clientBean.name}"/></p>
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" href="<s:url action="getUserHistory"></s:url> ">Histórico</a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="linkedPages.jsp">Páginas Linkadas</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="linkedPages.jsp">Páginas
+                        Linkadas</a></li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" href="<s:url action="logout"/>">Logout</a>
                     </li>
-                    <c:choose >
-                        <c:when test = "${loginBean.admin}">
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="adminPage.jsp">Página Administrador</a></li>
+                    <c:choose>
+                        <c:when test="${clientBean.admin}">
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="adminPage.jsp">Página
+                                Administrador</a></li>
                         </c:when>
                     </c:choose>
                 </c:when>

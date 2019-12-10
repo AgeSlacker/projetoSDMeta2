@@ -1,33 +1,26 @@
 package webserver.action;
 
-import com.opensymphony.xwork2.ActionSupport;
-import org.apache.struts2.interceptor.SessionAware;
-import webserver.model.LoginBean;
+import webserver.model.ClientBean;
 import webserver.model.SearchBean;
 
-import java.util.Map;
+public class SearchAction extends BaseAction {
 
-public class SearchAction extends ActionSupport implements SessionAware {
-    private Map<String, Object> session;
     @Override
     public String execute() throws Exception {
         session.remove("emptySearch");
-        if (getSearchBean().getSearchTerms().isEmpty()){
+        if (getSearchBean().getSearchTerms().isEmpty()) {
             System.out.println(session.toString());
-            this.session.put("emptySearch",true);
-            this.session.put("name","TEST");
+            this.session.put("emptySearch", true);
+            this.session.put("name", "TEST");
             System.out.println("returning error");
             return ERROR;
         }
-        LoginBean loginBean = (LoginBean)session.get("loginBean");
-        String user = loginBean != null ? loginBean.getName() : null;
+        ClientBean clientBean = getClientBean();
+        String user = clientBean != null ? clientBean.getName() : null;
         getSearchBean().setSearchResults(user);
         return SUCCESS;
     }
-    @Override
-    public void setSession(Map<String, Object> session) {
-        this.session = session;
-    }
+
 
     public SearchBean getSearchBean() {
         if (!session.containsKey("searchBean"))

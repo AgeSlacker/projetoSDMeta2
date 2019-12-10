@@ -9,12 +9,17 @@
     <package name="webserver" extends="struts-default">
         <interceptors>
             <interceptor name="requireLogin" class="webserver.interceptors.LoginInterceptor"></interceptor>
+            <interceptor name="adminOnly" class="webserver.interceptors.AdminInterceptor"></interceptor>
             <interceptor-stack name="requireLoginStack">
                 <interceptor-ref name="requireLogin"></interceptor-ref>
                 <interceptor-ref name="defaultStack"></interceptor-ref>
             </interceptor-stack>
+            <interceptor-stack name="adminOnlyStack">
+                <interceptor-ref name="adminOnly"></interceptor-ref>
+                <interceptor-ref name="requireLoginStack"></interceptor-ref>
+            </interceptor-stack>
         </interceptors>
-        <default-action-ref name="index" />
+        <default-action-ref name="index"/>
         <action name="index">
             <result>/index.jsp</result>
         </action>
@@ -24,11 +29,11 @@
             <result name="logout">/index.jsp</result>
             <result name="login">/login.jsp</result>
         </action>
-        <action name="login" class="webserver.action.LoginAction">
+        <action name="login" class="webserver.action.ClientAction" method="login">
             <result name="success">/index.jsp</result>
             <result name="error">/login.jsp</result>
         </action>
-        <action name="logout" class="webserver.action.LoginAction" method="logout">
+        <action name="logout" class="webserver.action.ClientAction" method="logout">
             <result name="success">/index.jsp</result>
         </action>
         <action name="register" class="webserver.action.RegisterAction">
@@ -44,7 +49,8 @@
             <result name="success">/userHistory.jsp</result>
             <result name="login">/login.jsp</result>
         </action>
-        <action name="enterAdminPage">
+        <action name="enterAdminPage" class="webserver.action.AdminAction" method="adminEnter">
+            <interceptor-ref name="adminOnlyStack"></interceptor-ref>
             <result name="success">/adminPage.jsp</result>
         </action>
     </package>

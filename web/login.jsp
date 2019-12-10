@@ -18,27 +18,30 @@
 </head>
 
 <body class="text-center">
-    <%@include file="navbar.jsp"%>
+<%@include file="navbar.jsp" %>
 
-    <div class="text-center border rounded-0 border-dark form-style-8" style="background-color: #ffffff;width: 298px;margin: auto;margin-top: 50px;">
-        <h1 style="margin-top: 58px;">Login</h1>
-        <s:form action="login" method="POST">
-        <div class="form-group">
-            <s:textfield name="loginBean.name" placeholder="Usuário" cssStyle="margin-top: 44px;" />
-            <c:if test="${session.noUserError == true}"><small class="text-danger">No user with <c:out value="${loginBean.name}"/> as username</small></c:if>
-        </div>
-        <div class="form-group">
-            <s:password name="loginBean.password" placeholder="Senha" cssStyle="margin-top: 9px;"/>
-            <c:if test="${session.wrongPassError == true}"><small class="text-danger">Wrong Password</small></c:if>
-        </div>
-        <div class="form-group">
-            <s:submit cssClass="btn btn-primary" cssStyle="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;" value="Entrar"/>
-        </div>
-        <a href="register.jsp" style="color: rgb(0,0,0);">Ainda não Possui Conta?</a>
+<div class="text-center border rounded-0 border-dark form-style-8"
+     style="background-color: #ffffff;width: 298px;margin: auto;margin-top: 50px;">
+    <h1 style="margin-top: 58px;">Login</h1>
+    <s:form action="login" method="POST">
+    <div class="form-group">
+        <s:textfield name="clientBean.name" placeholder="Usuário" cssStyle="margin-top: 44px;"/>
+        <c:if test="${session.noUserError == true}"><small class="text-danger">No user with <c:out
+                value="${clientBean.name}"/> as username</small></c:if>
     </div>
-        </s:form>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <div class="form-group">
+        <s:password name="clientBean.password" placeholder="Senha" cssStyle="margin-top: 9px;"/>
+        <c:if test="${session.wrongPassError == true}"><small class="text-danger">Wrong Password</small></c:if>
+    </div>
+    <div class="form-group">
+        <s:submit cssClass="btn btn-primary" cssStyle="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;"
+                  value="Entrar"/>
+    </div>
+    <a href="register.jsp" style="color: rgb(0,0,0);">Ainda não Possui Conta?</a>
+</div>
+</s:form>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
