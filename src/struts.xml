@@ -52,6 +52,12 @@
         <action name="enterAdminPage" class="webserver.action.AdminAction" method="adminEnter">
             <interceptor-ref name="adminOnlyStack"></interceptor-ref>
             <result name="success">/adminPage.jsp</result>
+            <result name="error">/adminPage.jsp</result>
+        </action>
+        <action name="indexNewPage" class="webserver.action.AdminAction" method="indexNewPage">
+            <interceptor-ref name="adminOnlyStack"></interceptor-ref>
+            <result name="success">/adminPage.jsp</result>
+            <result name="error">/adminPage.jsp</result>
         </action>
     </package>
 </struts>

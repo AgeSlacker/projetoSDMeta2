@@ -41,6 +41,8 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     }
 
     public void setName(String name) {
+        if (name.isEmpty())
+            name = null;
         this.name = name;
     }
 
@@ -54,7 +56,7 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
 
     @Override
     public void printMessage(String message) throws RemoteException {
-        System.out.println(message);
+        System.out.println("RMI sent : " + message);
     }
 
     @Override
