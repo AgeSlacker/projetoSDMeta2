@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login</title>
+    <title>Histórico</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
@@ -18,16 +18,16 @@
 </head>
 
 <body class="text-center">
-    <%@include file="navbar.jsp"%>
-    <div class="text-left border rounded-0 border-dark form-style-8"
-         style="background-color: #ffffff;max-width: 350px;margin: auto;margin-top: 50px;">
-        <s:iterator value="userHistoryBean.list">
-            <p><s:date name="date" ></s:date> | <s:property value="query"></s:property></p>
-            <br>
-        </s:iterator>
-    </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<%@include file="navbar.jsp" %>
+<div class="text-left border rounded-0 border-dark form-style-8"
+     style="background-color: #ffffff;max-width: 350px;margin: auto;margin-top: 50px;">
+    <s:iterator value="userHistoryBean.list">
+        <p><s:date name="date"></s:date> | <s:property value="query"></s:property></p>
+        <br>
+    </s:iterator>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

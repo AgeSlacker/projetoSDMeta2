@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Untitled</title>
+    <title>Páginas Linkadas</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
@@ -39,29 +39,39 @@
         <ul class="nav navbar-nav">
             <c:choose>
                 <c:when test="${session.logged == true}">
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" style="margin-top: 10px;" role="presentation">
                         <p class="navbar-text" style="">Welcome <c:out value="${clientBean.name}"/></p>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
+                                                                                          href="index.jsp">Buscar</a>
+                    </li>
+                    <li class="nav-item" style="margin-top: 10px;" role="presentation">
                         <a class="nav-link" href="<s:url action="getUserHistory"></s:url> ">Histórico</a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="linkedPages.jsp">Páginas
+                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
+                                                                                          href="linkedPages.jsp">Páginas
                         Linkadas</a></li>
-                    <li class="nav-item" role="presentation">
+                    <li class="nav-item" style="margin-top: 10px;" role="presentation">
                         <a class="nav-link" href="<s:url action="logout"/>">Logout</a>
                     </li>
                     <c:choose>
                         <c:when test="${clientBean.admin}">
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="adminPage.jsp">Página
-                                Administrador</a></li>
+                            <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
+                                                                                                  href="adminPage.jsp">ADM</a>
+                            </li>
                         </c:when>
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.jsp">Buscar</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="login.jsp">Login</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="register.jsp">Registrar</a></li>
+                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
+                                                                                          href="index.jsp">Buscar</a>
+                    </li>
+                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
+                                                                                          href="login.jsp">Login</a>
+                    </li>
+                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
+                                                                                          href="register.jsp">Registrar</a>
+                    </li>
                 </c:otherwise>
             </c:choose>
         </ul>
