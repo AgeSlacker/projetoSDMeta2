@@ -11,6 +11,7 @@ public class ClientAction extends BaseAction {
         System.out.println("Execute method");
         session.remove("noUserError");
         session.remove("wrongPassError");
+
         switch (getClientBean().doLogin()) {
             case SUCCESS:
                 session.put("logged", true);

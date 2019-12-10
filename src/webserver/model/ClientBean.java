@@ -31,6 +31,8 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     }
 
     public void setPassword(String password) {
+        if (password.isEmpty())
+            password = null;
         this.password = password;
     }
 
