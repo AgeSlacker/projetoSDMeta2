@@ -1,6 +1,7 @@
 package webserver.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.SessionAware;
 import rmiserver.IServer;
 import webserver.Configs;
@@ -13,11 +14,11 @@ import java.rmi.RemoteException;
 import java.util.Map;
 
 public abstract class BaseAction extends ActionSupport implements SessionAware {
-    protected Map<String, Object> session;
+    protected SessionMap<String, Object> session;
 
     @Override
     public void setSession(Map<String, Object> session) {
-        this.session = session;
+        this.session = (SessionMap<String, Object>) session;
     }
 
     public void setServer(IServer server) {

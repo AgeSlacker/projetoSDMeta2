@@ -28,9 +28,13 @@ public class ClientAction extends BaseAction {
     }
 
     public String logout() {
-        System.out.printf("Logiing out");
+        System.out.printf("Loging out");
+        getClientBean().doLogout();
         if (session.containsKey("logged") && (boolean) session.get("logged") == true) {
-            session.clear();
+            System.out.println(session.toString());
+            session.clear(); // TODO sera que precisamos dos dois?
+            session.invalidate();
+            System.out.println(session.toString());
         }
         return SUCCESS;
     }

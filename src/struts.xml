@@ -6,6 +6,7 @@
 
 <struts>
     <constant name="struts.ui.theme" value="simple"></constant>
+    <constant name="struts.devMode" value="true"></constant>
     <package name="webserver" extends="struts-default">
         <interceptors>
             <interceptor name="requireLogin" class="webserver.interceptors.LoginInterceptor"></interceptor>
