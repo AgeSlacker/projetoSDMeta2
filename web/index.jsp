@@ -37,12 +37,12 @@
         <s:form action="searchResults" method="POST">
             <s:textfield name="searchBean.searchTerms"
                          cssClass="border-dark"
-                         cssStyle="outline: none;padding-left: 20px;margin-top: 20px; width:35%; height:40px;border-radius:20px;"
-                         placeholder="Escreva aqui!"
+                         cssStyle="min-width:300px;outline: none;padding-left: 20px;margin-top: 20px; width:35%; height:40px;border-radius:20px;"
+                         placeholder="Faça sua Pesquisa no UCBusca!"
                          theme="simple"
             ></s:textfield>
             <c:if test="${session.emptySearch == true}">
-                <p>Empty search...</p>
+                <p style="margin-top: 5px;color:darkred;">Não é possivel efetuar uma pesquisa em branco</p>
             </c:if>
         </s:form>
     </div>
@@ -53,7 +53,7 @@
 <script>
     var websocket = null;
     window.onload = function () {
-        connect("ws://" + window.location.host + "/projetoSDMeta2/ws");
+        connect("ws://" + window.location.host + "/projetoSDMeta2/n");
         //document.getElementById("chat");
     }
 
