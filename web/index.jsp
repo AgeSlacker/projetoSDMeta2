@@ -53,7 +53,7 @@
 <script>
     var websocket = null;
     window.onload = function () {
-        connect("ws://" + window.location.host + "/ProjMeta2SD_war_exploded/notifications");
+        connect("ws://" + window.location.host + "/projetoSDMeta2/ws");
         //document.getElementById("chat");
     }
 

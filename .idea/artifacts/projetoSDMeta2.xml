@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="ProjMeta2SD:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/ProjMeta2SD_war_exploded</output-path>
+  <artifact type="exploded-war" name="projetoSDMeta2">
+    <output-path>$PROJECT_DIR$/out/artifacts/projetoSDMeta2</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="ProjMeta2SD/web/Web" />
       <element id="directory" name="WEB-INF">

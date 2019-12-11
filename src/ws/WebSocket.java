@@ -1,4 +1,4 @@
-package webserver;
+package ws;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
@@ -9,14 +9,14 @@ import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@ServerEndpoint(value = "/notifications")
+@ServerEndpoint(value = "/ws")
 public class WebSocket {
     private static final AtomicInteger connectionIds = new AtomicInteger(0);
     private static final Set<WebSocket> connections = new CopyOnWriteArraySet<>();
     private Session session;
 
     public WebSocket() {
-
+        System.out.println("WEBSOCKET CREATED!");
     }
 
     @OnOpen
