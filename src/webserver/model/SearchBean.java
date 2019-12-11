@@ -12,11 +12,11 @@ import java.util.ArrayList;
 public class SearchBean {
     private IServer server;
     private ArrayList<Page> searchResults;
-    private String searchTerms ;
+    private String searchTerms;
 
-    public SearchBean(){
+    public SearchBean() {
         System.getProperties().put("java.security.policy", "policy.all");
-        try{
+        try {
             server = (IServer) Naming.lookup("//localhost:7000/RMIserver");
         } catch (RemoteException e) {
             e.printStackTrace();
@@ -32,7 +32,7 @@ public class SearchBean {
     }
 
     public void setSearchTerms(String searchTerms) {
-        this.searchTerms = searchTerms;
+        this.searchTerms = searchTerms.toLowerCase();
         System.out.println("Setting search terms to " + searchTerms);
     }
 

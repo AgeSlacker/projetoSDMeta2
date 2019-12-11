@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <s:textfield cssClass="border border-dark form-control search-field"
                                  cssStyle="border-radius:20px;width: 350px;"
-                                 name="linkedPagesBean.link" placeholder="url"
+                                 name="linkedPagesBean.link" placeholder="URL a indexar"
                     />
                 </div>
                 <i class="fa fa-search"
