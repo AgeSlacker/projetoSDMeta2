@@ -11,6 +11,7 @@ public class AdminAction extends BaseAction {
     }
 
     public String adminEnter() {
+        getAdminBean().setUsers();
         return SUCCESS;
     }
 
@@ -22,6 +23,11 @@ public class AdminAction extends BaseAction {
             e.printStackTrace();
         }
         return ERROR;
+    }
+
+    public String grantAdmin() {
+        getAdminBean().grantAdmin();
+        return SUCCESS;
     }
 
     public AdminBean getAdminBean() {

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.net.DatagramPacket;
 import java.util.ArrayList;
 
-class User implements Serializable {
+public class User implements Serializable {
     String username;
     String password;
     boolean admin;
@@ -15,6 +15,18 @@ class User implements Serializable {
         this.username = username;
         this.password = password;
         this.admin = isAdmin;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 
     @Override

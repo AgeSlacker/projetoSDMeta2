@@ -7,7 +7,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="ProjMeta2SD" />
         </element>
-        <element id="directory" name="lib" />
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="asm-3.3" />
+        </element>
       </element>
     </root>
   </artifact>

@@ -45,7 +45,7 @@
             <result>/linkedPages.jsp</result>
         </action>
         <action name="getUserHistory" class="webserver.action.UserHistoryAction">
-            <interceptor-ref name="requireLoginStack"></interceptor-ref>
+            <interceptor-ref name="adminOnlyStack"></interceptor-ref>
             <result name="success">/userHistory.jsp</result>
             <result name="login">/login.jsp</result>
         </action>
@@ -58,6 +58,9 @@
             <interceptor-ref name="adminOnlyStack"></interceptor-ref>
             <result name="success">/adminPage.jsp</result>
             <result name="error">/adminPage.jsp</result>
+        </action>
+        <action name="grantAdmin" class="webserver.action.AdminAction" method="grantAdmin">
+            <result>/adminPage.jsp</result>
         </action>
     </package>
 </struts>

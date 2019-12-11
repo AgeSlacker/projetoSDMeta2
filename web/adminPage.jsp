@@ -100,12 +100,22 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td class="text-center">Cell 1</td>
-                            <td class="text-center"><input type="checkbox" checked data-toggle="toggle"
-                                                           data-size="small" data-onstyle="dark" data-offstyle="danger">
-                            </td>
-                        </tr>
+                        <s:iterator value="adminBean.users">
+                            <tr>
+                                <td class="text-center"><s:property value="username"/></td>
+
+                                <td class="text-center">
+                                    <s:checkbox name="admin"
+                                                data-toggle="toggle"
+                                                data-size="small"
+                                                data-onstyle="dark"
+                                                data-offstyle="danger"
+
+                                    />
+                                </td>
+
+                            </tr>
+                        </s:iterator>
                         </tbody>
                     </table>
                 </div>
@@ -116,6 +126,20 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script>
+    $('input[type=checkbox]').change(function (e) {
+        if (!$(this).prop('checked')) {
+            $(this).data("bs.toggle").on(true)
+            alert("Não podes retirar privilégios de outro admin.")
+        }
+        var name = $(this).parent().parent().parent().children()[0].innerText;
+        $.ajax({
+            type: "POST",
+            url: "<s:url action="grantAdmin"></s:url>",
+            data: {"adminBean.grantedUsername": name} //TODO ir buscar o username da checkbox
+        });
+    });
+</script>
 </body>
 
 </html>
