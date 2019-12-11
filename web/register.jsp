@@ -26,7 +26,8 @@
          style="background-color: #ffffff;width: 298px;margin: auto;margin-top: 50px;">
         <h1 style="margin-top: 58px;">Registrar</h1>
         <div class="form-group">
-            <s:textfield name="registerBean.name" placeholder="Usuário" cssStyle="margin-top: 44px;"></s:textfield>
+            <s:textfield name="registerBean.name" placeholder="Usuário" cssStyle="margin-top: 44px;"
+                         id="nameField"></s:textfield>
             <c:if test="${session.errorUserExists}">
                 <small class="text-danger">Username not available.</small>
             </c:if>
@@ -43,6 +44,11 @@
 </s:form>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#nameField").focus();
+    });
+</script>
 </body>
 
 </html>

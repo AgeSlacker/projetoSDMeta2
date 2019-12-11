@@ -25,7 +25,7 @@
     <h1 style="margin-top: 58px;">Login</h1>
     <s:form action="login" method="POST">
     <div class="form-group">
-        <s:textfield name="clientBean.name" placeholder="Usuário" cssStyle="margin-top: 44px;"/>
+        <s:textfield name="clientBean.name" placeholder="Usuário" cssStyle="margin-top: 44px;" id="loginField"/>
         <c:if test="${session.noUserError == true}"><small class="text-danger">No user with <c:out
                 value="${clientBean.name}"/> as username</small></c:if>
     </div>
@@ -43,6 +43,11 @@
 </s:form>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#loginField").focus();
+    });
+</script>
 </body>
 
 </html>

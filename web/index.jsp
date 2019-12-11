@@ -40,6 +40,7 @@
                          cssStyle="min-width:300px;outline: none;padding-left: 20px;margin-top: 20px; width:35%; height:40px;border-radius:20px;"
                          placeholder="Faça sua Pesquisa no UCBusca!"
                          theme="simple"
+                         id="searchBar"
             ></s:textfield>
             <c:if test="${session.emptySearch == true}">
                 <p style="margin-top: 5px;color:darkred;">Não é possivel efetuar uma pesquisa em branco</p>
@@ -49,6 +50,11 @@
 </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchBar").focus();
+    });
+</script>
 </body>
 
 </html>
