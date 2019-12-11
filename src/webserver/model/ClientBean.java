@@ -4,12 +4,16 @@ import rmiserver.IClient;
 import rmiserver.IServer;
 import rmiserver.PacketBuilder;
 import webserver.Configs;
+import ws.WebSocket;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
+
+import static ws.WebSocket.sockets;
 
 public class ClientBean extends UnicastRemoteObject implements IClient {
     private IServer server;
@@ -64,7 +68,32 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
 
     @Override
     public void printMessage(String message) throws RemoteException {
-        System.out.println(name + "| RMI sent " + message);
+        String finalMessage = message;
+        ArrayList<String> messages;
+        WebSocket webSocket = sockets.get(name);
+        if (webSocket != null) {
+            webSocket.sendMessage(finalMessage);
+        } else {
+            (new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    int tries = 500;
+                    while (tries-- > 0) {
+                        WebSocket webSocket = sockets.get(name);
+                        if (webSocket != null) {
+                            webSocket.sendMessage(finalMessage);
+                            return;
+                        }
+                        try {
+                            System.out.println("Retrying...");
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            })).start();
+        }
     }
 
     @Override

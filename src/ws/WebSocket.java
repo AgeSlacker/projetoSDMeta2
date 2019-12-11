@@ -5,32 +5,47 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
+import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @ServerEndpoint(value = "/ws")
 public class WebSocket {
     private static final AtomicInteger connectionIds = new AtomicInteger(0);
-    private static final Set<WebSocket> connections = new CopyOnWriteArraySet<>();
+    public static final ConcurrentHashMap<String, WebSocket> sockets = new ConcurrentHashMap<>();
+
     private Session session;
+    private boolean firstMessage = true;
+    private String username;
 
     public WebSocket() {
-        System.out.println("WEBSOCKET CREATED!");
+
     }
 
     @OnOpen
     public void start(Session session) {
         this.session = session;
-        connections.add(this);
     }
 
     @OnClose
     public void end() {
-        connections.remove(this);
+
     }
 
     @OnMessage
-    public void incoming(String message) { // we should never trust the client , and sensitive HTML // should be replaced with &lt; &gt; &quot; &amp; broadcast ("[" + nickname + "]" + message );
+    public void incoming(String message) {
+        if (firstMessage) {
+            firstMessage = false;
+            username = message;
+            sockets.put(username, this);
+        }
+    }
+
+    public void sendMessage(String message) {
+        try {
+            session.getBasicRemote().sendText(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
