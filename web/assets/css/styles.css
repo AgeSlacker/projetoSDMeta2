@@ -50,4 +50,9 @@
 .form-style-8 input[type="button"]:hover,
 .form-style-8 input[type="submit"]:hover {
     background-color: #000000 !important;
+    box-shadow: 0 0 11px black;
+}
+
+.nav-link:hover {
+    text-shadow: 0px 0px;
 }
