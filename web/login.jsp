@@ -14,13 +14,13 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
-
+    <link rel="shortcut icon" href="assets/img/icon.ico"/>
 </head>
 
 <body class="text-center">
 <%@include file="navbar.jsp" %>
 
-<div class="text-center border rounded-0 border-dark form-style-8"
+<div class="text-center form-style-8 border rounded-0 border-dark 3"
      style="background-color: #ffffff;width: 298px;margin: auto;margin-top: 50px;">
     <h1 style="margin-top: 58px;">Login</h1>
     <s:form action="login" method="POST">
@@ -34,7 +34,8 @@
         <c:if test="${session.wrongPassError == true}"><small class="text-danger">Wrong Password</small></c:if>
     </div>
     <div class="form-group">
-        <s:submit cssClass="btn btn-primary" cssStyle="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;"
+        <s:submit cssClass="btn btn-dark"
+                  cssStyle="border:none; width: 181px;background-color: rgb(0,0,0);margin-top: 25px;"
                   value="Entrar"/>
     </div>
     <a href="register.jsp" style="color: rgb(0,0,0);">Ainda não Possui Conta?</a>

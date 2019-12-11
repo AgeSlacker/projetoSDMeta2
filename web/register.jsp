@@ -15,14 +15,15 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
-
+    <link rel="shortcut icon" href="assets/img/icon.ico"/>
 </head>
 
 <body class="text-center">
-    <%@include file="navbar.jsp"%>
+<%@include file="navbar.jsp" %>
 
-    <s:form action="register" method="POST">
-    <div class="text-center border rounded-0 border-dark form-style-8" style="background-color: #ffffff;width: 298px;margin: auto;margin-top: 50px;">
+<s:form action="register" method="POST">
+    <div class="text-center border rounded-0 border-dark form-style-8"
+         style="background-color: #ffffff;width: 298px;margin: auto;margin-top: 50px;">
         <h1 style="margin-top: 58px;">Registrar</h1>
         <div class="form-group">
             <s:textfield name="registerBean.name" placeholder="Usuário" cssStyle="margin-top: 44px;"></s:textfield>
@@ -31,16 +32,17 @@
             </c:if>
         </div>
         <div class="form-group">
-            <s:password name="registerBean.password" placeholder = "Senha" cssStyle="margin-top: 9px;"></s:password>
+            <s:password name="registerBean.password" placeholder="Senha" cssStyle="margin-top: 9px;"></s:password>
         </div>
         <div class="form-group">
-            <s:submit cssStyle="width: 181px;background-color: rgb(0,0,0);margin-top: 25px;" cssClass="btn btn-dark" value="Registar"></s:submit>
+            <s:submit cssStyle="border:none;width: 181px;background-color: rgb(0,0,0);margin-top: 25px;"
+                      cssClass="btn btn-dark" value="Registar"></s:submit>
         </div>
         <a href="<s:url action="login"/>" style="color: rgb(0,0,0);">Já Possui Conta?</a>
     </div>
-    </s:form>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</s:form>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>
