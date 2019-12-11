@@ -29,11 +29,21 @@ public class AdminBean extends BaseBean {
     }
 
     public void grantAdmin() {
-        try {
-            System.out.println("Granting admin to " + grantedUsername);
-            server.grantAdmin(null, grantedUsername);
-        } catch (RemoteException e) {
-            e.printStackTrace();
+
+        User user = null;
+        for (User u : users) {
+            if (u.getUsername().equals(grantedUsername)) {
+                user = u;
+                break;
+            }
+        }
+        if (user != null && !user.isAdmin()) {
+            try {
+                System.out.println("Granting admin to " + grantedUsername);
+                server.grantAdmin(null, grantedUsername);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
     }
 

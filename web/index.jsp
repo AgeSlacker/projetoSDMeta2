@@ -49,49 +49,6 @@
 </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-
-<script>
-    var websocket = null;
-    window.onload = function () {
-        connect("ws://" + window.location.host + "/projetoSDMeta2/n");
-        //document.getElementById("chat");
-    }
-
-    function connect(host) { // connect to the host websocket servlet
-        if ("WebSocket" in window) websocket = new WebSocket(host);
-        else if ("MozWebSocket" in window) websocket = new MozWebSocket(host);
-        else {
-            // TODO error message
-            return;
-        }
-        websocket.onopen = onOpen;
-        websocket.onclose = onClose;
-        websocket.onmessage = onMessage;
-        websocket.onerror = onError;
-    }
-
-    function onOpen(event) {
-        return;
-    }
-
-    function onClose(event) {
-        return;
-    }
-
-    function onMessage(message) {
-        return;
-    }
-
-    function onError(event) {
-        return;
-    }
-
-    function doSend() {
-        var message = document.getElementById("chat ").value;
-        if (message != "")
-            websocket.send(message); // send the message document . getElementById (’chat ’). value = ’’;
-    }
-</script>
 </body>
 
 </html>

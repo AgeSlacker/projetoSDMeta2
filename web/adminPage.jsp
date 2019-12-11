@@ -131,6 +131,7 @@
         if (!$(this).prop('checked')) {
             $(this).data("bs.toggle").on(true)
             alert("Não podes retirar privilégios de outro admin.")
+            return;
         }
         var name = $(this).parent().parent().parent().children()[0].innerText;
         $.ajax({
