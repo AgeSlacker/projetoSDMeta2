@@ -16,29 +16,6 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <style>
-        /* width */
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        /* Track */
-        ::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey;
-            border-radius: 10px;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-            background: black;
-            border-radius: 10px;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-            background: black;
-        }
-    </style>
 </head>
 
 <body class="text-sm-center">
