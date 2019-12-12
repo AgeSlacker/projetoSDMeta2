@@ -16,6 +16,29 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: black;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: black;
+        }
+    </style>
 </head>
 
 <body class="text-sm-center">
@@ -41,8 +64,9 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="table-responsive">
-                    <table class="table">
+                <div class="table-responsive" style="max-height: 300px;overflow-y:scroll;">
+                    <table class=" table
+                ">
                         <thead>
                         <tr>
                             <th class="text-center">Página</th>
@@ -59,8 +83,9 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="table-responsive">
-                    <table class="table">
+                <div class="table-responsive" style="max-height: 300px;overflow-y:scroll;">
+                    <table class=" table
+            ">
                         <thead>
                         <tr>
                             <th class="text-center">Pesquisas</th>
@@ -75,8 +100,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="table-responsive" style="margin-top: 42px;">
-                    <table class="table">
+                <div class="table-responsive" style="margin-top: 42px;max-height: 300px;overflow-y:scroll;">
+                    <table class=" table
+        ">
                         <thead>
                         <tr>
                             <th>Servidores Multicast Ativos</th>
@@ -91,7 +117,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="table-responsive">
+                <div class="table-responsive" style="max-height: 300px;overflow-y:scroll; ">
                     <table class="table">
                         <thead>
                         <tr>

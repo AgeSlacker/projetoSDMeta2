@@ -20,7 +20,7 @@
 <body class="text-center">
 <%@include file="navbar.jsp" %>
 <div class="text-left border rounded-0 border-dark form-style-8"
-     style="background-color: #ffffff;max-width: 350px;margin: auto;margin-top: 50px;">
+     style="background-color: #ffffff;max-height:500px;overflow-y:scroll;max-width: 350px;margin: auto;margin-top: 50px;">
     <s:iterator value="userHistoryBean.list">
         <p><s:date name="date"></s:date> | <s:property value="query"></s:property></p>
         <br>
