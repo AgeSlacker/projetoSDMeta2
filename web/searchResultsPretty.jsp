@@ -91,7 +91,7 @@
             <div class="col">
                 <div style="margin-bottom: 20px;width: 60%;"><a href="<s:property value="url"></s:property>"><s:property
                         value="name"></s:property></a>
-                    <p style="margin-bottom: 0px;"><s:property value="url"></s:property></p>
+                    <p style="color:green;margin-bottom: 0px;"><s:property value="url"></s:property></p>
                     <p style="margin-bottom: 9px;"><s:property value="description"></s:property></p>
                 </div>
             </div>
