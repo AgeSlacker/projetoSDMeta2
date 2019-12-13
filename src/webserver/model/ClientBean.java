@@ -9,6 +9,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 
 import static ws.WebSocket.sockets;
 
@@ -17,6 +18,7 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     private String name = null;
     private String password = null;
     private boolean isAdmin = false;
+    WebSocketPusher webSocketPusher = new WebSocketPusher();
 
     public ClientBean() throws RemoteException {
         super();
@@ -29,6 +31,7 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        (new Thread(webSocketPusher)).start();
     }
 
     public void setPassword(String password) {
@@ -94,53 +97,23 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
 
     @Override
     public void updateAdminScreen(AdminData adminData) throws RemoteException {
-        boolean tryLater = false;
-        WebSocket webSocket = sockets.get(name);
-        if (webSocket != null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("TOP_PAGES|");
-            for (TopPage p : adminData.topPages) {
-                sb.append("<tr><td>" + p.count + "</td><td>" + p.url + "</td></tr>");
-            }
-            try {
-                webSocket.sendMessage(sb.toString());
-            } catch (IllegalStateException e) {
-                tryLater = true;
-            }
+        String topPagesTable = buildTopPagesTable(adminData.topPages);
+        synchronized (webSocketPusher) {
+            webSocketPusher.topPageTable = topPagesTable;
+            webSocketPusher.notify();
         }
-        if (tryLater) {
-            (new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    int tries = 500;
-                    while (tries-- > 0) {
-                        WebSocket webSocket = sockets.get(name);
-                        if (webSocket != null) {
-                            StringBuilder sb = new StringBuilder();
-                            sb.append("TOP_PAGES|");
-                            sb.append("<tr>");
-                            for (TopPage p : adminData.topPages) {
-                                sb.append("<td>" + p.count + "</td><td>" + p.url + "</td>");
-                            }
-                            sb.append("</tr>");
-                            try {
-                                webSocket.sendMessage(sb.toString());
-                            } catch (IllegalStateException e) {
-                                System.out.println("That illegal expression");
-                                continue;
-                            }
-                            return;
-                        }
-                        try {
-                            System.out.println("Retrying...");
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            })).start();
+
+    }
+
+    private String buildTopPagesTable(ArrayList<TopPage> topPages) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("TOP_PAGES|");
+        sb.append("<tr>");
+        for (TopPage p : topPages) {
+            sb.append("<td>" + p.count + "</td><td>" + p.url + "</td>");
         }
+        sb.append("</tr>");
+        return sb.toString();
     }
 
     @Override
@@ -151,5 +124,44 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     @Override
     public void setAdmin() throws RemoteException {
         this.isAdmin = true;
+    }
+
+    class WebSocketPusher implements Runnable {
+
+        String topPageTable;
+        String topSearchesTable;
+        int sleepTimeSeconds = 1;
+        int tries = 10;
+
+        @Override
+        public void run() {
+            while (true) {
+                synchronized (this) {
+                    try {
+                        wait(); //wait for new updates
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    while (tries-- > 0) {
+                        WebSocket webSocket = sockets.get(name);
+                        if (webSocket != null) {
+                            try {
+                                webSocket.sendMessage(topPageTable);
+                            } catch (IllegalStateException e) {
+                                System.out.println("That illegal expression");
+                                continue;
+                            }
+                            break;
+                        }
+                        try {
+                            System.out.println("Retrying...");
+                            wait(sleepTimeSeconds * 1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }
     }
 }

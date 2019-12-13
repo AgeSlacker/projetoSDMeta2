@@ -60,8 +60,7 @@
             </div>
             <div class="col-md-4">
                 <div class="table-responsive" style="max-height: 300px;overflow-y:scroll;">
-                    <table class=" table
-            ">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th class="text-center">Pesquisas</th>
