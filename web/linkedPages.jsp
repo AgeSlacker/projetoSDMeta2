@@ -58,7 +58,7 @@
                     <c:choose>
                         <c:when test="${clientBean.admin}">
                             <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                                  href="adminPage.jsp">ADM</a>
+                                                                                                  href="<s:url action="enterAdminPage"/>">ADM</a>
                             </li>
                         </c:when>
                     </c:choose>
@@ -91,6 +91,9 @@
 </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    <jsp:include page="assets/js/websocket_connection.jsp"/>
+</script>
 </body>
 
 </html>

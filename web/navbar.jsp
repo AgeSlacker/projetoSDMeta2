@@ -26,7 +26,7 @@
                         <c:choose>
                             <c:when test="${clientBean.admin}">
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" href="<s:url action="enterAdminPage"/> ">ADM</a>
+                                    <a class="nav-link" href="<s:url action="enterAdminPage"/>">ADM</a>
                                 </li>
                             </c:when>
                         </c:choose>

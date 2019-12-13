@@ -55,6 +55,9 @@
         $("#searchBar").focus();
     });
 </script>
+<script>
+    <jsp:include page="assets/js/websocket_connection.jsp"/>
+</script>
 </body>
 
 </html>

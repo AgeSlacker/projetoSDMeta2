@@ -28,6 +28,9 @@
 </div>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    <jsp:include page="assets/js/websocket_connection.jsp"/>
+</script>
 </body>
 
 </html>
