@@ -1,8 +1,6 @@
 package webserver.model;
 
-import rmiserver.IClient;
-import rmiserver.IServer;
-import rmiserver.PacketBuilder;
+import rmiserver.*;
 import webserver.Configs;
 import ws.WebSocket;
 
@@ -11,7 +9,6 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 
 import static ws.WebSocket.sockets;
 
@@ -69,7 +66,6 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     @Override
     public void printMessage(String message) throws RemoteException {
         String finalMessage = message;
-        ArrayList<String> messages;
         WebSocket webSocket = sockets.get(name);
         if (webSocket != null) {
             webSocket.sendMessage(finalMessage);
@@ -97,6 +93,57 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     }
 
     @Override
+    public void updateAdminScreen(AdminData adminData) throws RemoteException {
+        boolean tryLater = false;
+        WebSocket webSocket = sockets.get(name);
+        if (webSocket != null) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("TOP_PAGES|");
+            for (TopPage p : adminData.topPages) {
+                sb.append("<tr><td>" + p.count + "</td><td>" + p.url + "</td></tr>");
+            }
+            try {
+                webSocket.sendMessage(sb.toString());
+            } catch (IllegalStateException e) {
+                tryLater = true;
+            }
+        }
+        if (tryLater) {
+            (new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    int tries = 500;
+                    while (tries-- > 0) {
+                        WebSocket webSocket = sockets.get(name);
+                        if (webSocket != null) {
+                            StringBuilder sb = new StringBuilder();
+                            sb.append("TOP_PAGES|");
+                            sb.append("<tr>");
+                            for (TopPage p : adminData.topPages) {
+                                sb.append("<td>" + p.count + "</td><td>" + p.url + "</td>");
+                            }
+                            sb.append("</tr>");
+                            try {
+                                webSocket.sendMessage(sb.toString());
+                            } catch (IllegalStateException e) {
+                                System.out.println("That illegal expression");
+                                continue;
+                            }
+                            return;
+                        }
+                        try {
+                            System.out.println("Retrying...");
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            })).start();
+        }
+    }
+
+    @Override
     public boolean isAlive() throws RemoteException {
         return true;
     }
@@ -105,32 +152,4 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     public void setAdmin() throws RemoteException {
         this.isAdmin = true;
     }
-    /*
-    boolean rebindServer() {
-        while (retries < 60) {
-            try {
-                this.server = (IServer) Naming.lookup("//localhost:7000/RMIserver");
-                System.out.println("Waiting for server...");
-                if (this.username != null) {
-                    this.server.setLogged(this, username);
-                }
-                return true; // rebound successfully
-            } catch (NotBoundException e) {
-
-            } catch (MalformedURLException e) {
-                //e.printStackTrace();
-            } catch (RemoteException e) {
-                //e.printStackTrace();
-            }
-            retries++;
-            System.out.println("Rebind failed (" + retries + ")");
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println("Servers must be down. Sorry for the inconvenience");
-        return false;
-    }*/
 }

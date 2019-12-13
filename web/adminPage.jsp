@@ -42,15 +42,14 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="table-responsive" style="max-height: 300px;overflow-y:scroll;">
-                    <table class=" table
-                ">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th class="text-center">Página</th>
                             <th class="text-center">Número de Links</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="pagesTable">
                         <tr>
                             <td class="text-center">Cell 1</td>
                             <td class="text-center"><input type="checkbox"></td>

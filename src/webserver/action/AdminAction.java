@@ -12,6 +12,11 @@ public class AdminAction extends BaseAction {
 
     public String adminEnter() {
         getAdminBean().setUsers();
+        try {
+            getServer().adminInPage(getClientBean().getName());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         return SUCCESS;
     }
 

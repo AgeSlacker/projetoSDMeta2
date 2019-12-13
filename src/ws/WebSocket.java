@@ -37,7 +37,9 @@ public class WebSocket {
         if (firstMessage) {
             firstMessage = false;
             username = message;
+            //ServerEndpointConfig.Configurator configurator = new ServerEndpointConfig.Configurator();
             sockets.put(username, this);
+
         }
     }
 

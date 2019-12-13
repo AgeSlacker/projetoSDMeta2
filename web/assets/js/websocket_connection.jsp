@@ -31,8 +31,16 @@
     }
 
     function onMessage(message) {
-        alert(message.data);
-        console.log(message.data);
+        var tokenized = message.data.split("|");
+        var tag = tokenized[0];
+        var data = tokenized[1];
+        if (tag == "TOP_PAGES") {
+            var topPagesTable = document.getElementById("pagesTable");
+            if (topPagesTable != null)
+                topPagesTable.innerHTML = data;
+        } else {
+            alert(data);
+        }
         return;
     }
 
