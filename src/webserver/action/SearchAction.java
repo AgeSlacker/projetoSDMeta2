@@ -21,6 +21,15 @@ public class SearchAction extends BaseAction {
         return SUCCESS;
     }
 
+    public String translateResults() {
+        getSearchBean().doTranslation();
+        return SUCCESS;
+    }
+
+    public String translateOriginal() {
+        getSearchBean().resetTranslation();
+        return SUCCESS;
+    }
 
     public SearchBean getSearchBean() {
         if (!session.containsKey("searchBean"))

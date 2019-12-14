@@ -63,5 +63,11 @@
         <action name="grantAdmin" class="webserver.action.AdminAction" method="grantAdmin">
             <result>/adminPage.jsp</result>
         </action>
+        <action name="translateOriginal" class="webserver.action.SearchAction" method="translateOriginal">
+            <result>./searchResultsPretty.jsp</result>
+        </action>
+        <action name="translate" class="webserver.action.SearchAction" method="translateResults">
+            <result>./searchResultsPretty.jsp</result>
+        </action>
     </package>
 </struts>

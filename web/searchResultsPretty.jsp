@@ -24,8 +24,8 @@
 <nav class="navbar navbar-light navbar-expand-md border-dark border rounded-0 navigation-clean-search"
      style="margin-bottom: 20px;">
     <div class="container"><a class="navbar-brand" style="font-family: 'Cinzel', serif;" href="index.jsp">UCBUSCA</a>
-        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
-                class="navbar-toggler-icon"></span></button>
+        <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
              id="navcol-1">
             <s:form cssClass="form-inline mr-auto" action="searchResults" method="POST">
@@ -38,6 +38,14 @@
                 </div>
                 <i class="fa fa-search"
                    style="font-size: 24px;margin-top: -8px;margin-left: 10px;color: rgb(0,0,0);"></i>
+                <c:choose>
+                    <c:when test="${searchBean.translated == true}">
+                        <s:a action="translateOriginal">Voltar ao original</s:a>
+                    </c:when>
+                    <c:otherwise>
+                        <s:a action="translate">Traduzir para portugûes</s:a>
+                    </c:otherwise>
+                </c:choose>
             </s:form>
         </div>
         <c:if test="${session.emptySearch == true}">
