@@ -18,6 +18,7 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     private String name = null;
     private String password = null;
     private boolean isAdmin = false;
+    private ArrayList<String> allSeenServers = new ArrayList<>();
     WebSocketPusher webSocketPusher = new WebSocketPusher();
 
     public ClientBean() throws RemoteException {
@@ -131,8 +132,19 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
         StringBuilder sb = new StringBuilder();
         sb.append("ACTIVE_SERVERS|");
         for (String server : servers) {
-            sb.append("<tr><td>" + server + "</td></tr>");
+            if (!allSeenServers.contains(server)) {
+                allSeenServers.add(server);
+            }
+            sb.append("<tr><td class='text-success'>" + server + "</td></tr>");
         }
+
+        for (String server : allSeenServers) {
+            if (!servers.contains(server)) {
+                // This server went offline
+                sb.append("<tr><td class='text-danger'>" + server + "</td></tr>");
+            }
+        }
+
         return sb.toString();
     }
 
