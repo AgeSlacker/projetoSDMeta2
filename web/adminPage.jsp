@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 </head>
@@ -39,8 +39,8 @@
                 </s:form>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-4">
+        <div class="row" style="margin-bottom: 30px;border-bottom: 1px solid black;">
+            <div class="col">
                 <div class="table-responsive" style="max-height: 300px;overflow-y:scroll;">
                     <table class="table">
                         <thead>
@@ -58,8 +58,10 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="table-responsive" style="max-height: 300px;overflow-y:scroll;">
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="table-responsive" style="margin-bottom:30px;max-height: 300px;overflow-y:scroll;">
                     <table class="table">
                         <thead>
                         <tr>
@@ -90,7 +92,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="table-responsive" style="max-height: 300px;overflow-y:scroll; ">
                     <table class="table">
                         <thead>
