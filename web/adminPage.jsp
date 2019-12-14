@@ -67,7 +67,7 @@
                             <th class="text-center">Número de procuras</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="searchesTable">
                         <tr>
                             <td class="text-center">Cell 1</td>
                             <td class="text-center">Cell 2</td>
@@ -76,14 +76,13 @@
                     </table>
                 </div>
                 <div class="table-responsive" style="margin-top: 42px;max-height: 300px;overflow-y:scroll;">
-                    <table class=" table
-        ">
+                    <table class="table">
                         <thead>
                         <tr>
                             <th>Servidores Multicast Ativos</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="multicastServersTable">
                         <tr>
                             <td>Cell 1</td>
                         </tr>

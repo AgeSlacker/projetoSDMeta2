@@ -38,7 +38,17 @@
             var topPagesTable = document.getElementById("pagesTable");
             if (topPagesTable != null)
                 topPagesTable.innerHTML = data;
-        } else {
+        } else if (tag == "TOP_SEARCHES") {
+            var topSearchesTable = document.getElementById("searchesTable");
+            if (topSearchesTable != null) {
+                topSearchesTable.innerHTML = data;
+            }
+        } else if (tag == "ACTIVE_SERVERS") {
+            var multicastServersTable = document.getElementById("multicastServersTable");
+            if (multicastServersTable != null) {
+                multicastServersTable.innerHTML = data;
+            }
+        } else if (tag == "NOTIFICATION") {
             alert(data);
         }
         return;

@@ -68,38 +68,42 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
 
     @Override
     public void printMessage(String message) throws RemoteException {
-        String finalMessage = message;
-        WebSocket webSocket = sockets.get(name);
-        if (webSocket != null) {
-            webSocket.sendMessage(finalMessage);
-        } else {
-            (new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    int tries = 500;
-                    while (tries-- > 0) {
-                        WebSocket webSocket = sockets.get(name);
-                        if (webSocket != null) {
-                            webSocket.sendMessage(finalMessage);
-                            return;
-                        }
+        (new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int tries = 20;
+                while (tries-- > 0) {
+                    WebSocket webSocket = sockets.get(name);
+                    if (webSocket != null) {
                         try {
-                            System.out.println("Retrying...");
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+                            webSocket.sendMessage("NOTIFICATION|" + message);
+                            return;
+                        } catch (IllegalStateException e) {
+                            // no websocket, try latter
                         }
                     }
+                    try {
+                        System.out.println("Retrying...");
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
-            })).start();
-        }
+            }
+        })).start();
+
     }
 
     @Override
     public void updateAdminScreen(AdminData adminData) throws RemoteException {
         String topPagesTable = buildTopPagesTable(adminData.topPages);
+        String topSearchesTable = buildTopSearchesTable(adminData.topSearches);
+        String multicastServers = buildMulticastServersTable(adminData.servers);
+        System.out.println("New table: " + topPagesTable);
         synchronized (webSocketPusher) {
             webSocketPusher.topPageTable = topPagesTable;
+            webSocketPusher.topSearchesTable = topSearchesTable;
+            webSocketPusher.multicastSearchesTable = multicastServers;
             webSocketPusher.notify();
         }
 
@@ -108,11 +112,27 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     private String buildTopPagesTable(ArrayList<TopPage> topPages) {
         StringBuilder sb = new StringBuilder();
         sb.append("TOP_PAGES|");
-        sb.append("<tr>");
         for (TopPage p : topPages) {
-            sb.append("<td>" + p.count + "</td><td>" + p.url + "</td>");
+            sb.append("<tr><td>" + p.count + "</td><td>" + p.url + "</td></tr>");
         }
-        sb.append("</tr>");
+        return sb.toString();
+    }
+
+    private String buildTopSearchesTable(ArrayList<TopSearch> topSearches) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("TOP_SEARCHES|");
+        for (TopSearch search : topSearches) {
+            sb.append("<tr><td>" + search.count + "</td><td>" + search.search + "</td></tr>");
+        }
+        return sb.toString();
+    }
+
+    private String buildMulticastServersTable(ArrayList<String> servers) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ACTIVE_SERVERS|");
+        for (String server : servers) {
+            sb.append("<tr><td>" + server + "</td></tr>");
+        }
         return sb.toString();
     }
 
@@ -130,6 +150,7 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
 
         String topPageTable;
         String topSearchesTable;
+        String multicastSearchesTable;
         int sleepTimeSeconds = 1;
         int tries = 10;
 
@@ -139,6 +160,7 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
                 synchronized (this) {
                     try {
                         wait(); //wait for new updates
+                        tries = 10;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -146,7 +168,11 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
                         WebSocket webSocket = sockets.get(name);
                         if (webSocket != null) {
                             try {
+                                System.out.println("Sending table: " + topPageTable);
                                 webSocket.sendMessage(topPageTable);
+                                webSocket.sendMessage(topSearchesTable);
+                                webSocket.sendMessage(multicastSearchesTable);
+                                System.out.println("[WebSocketSender] sent successfully.");
                             } catch (IllegalStateException e) {
                                 System.out.println("That illegal expression");
                                 continue;
