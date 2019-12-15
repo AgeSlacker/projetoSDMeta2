@@ -28,7 +28,7 @@
             <span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
              id="navcol-1">
-            <s:form cssClass="form-inline mr-auto" action="searchResults" method="POST">
+            <s:form cssClass="form-inline mr-auto" action="searchResults" method="GET">
                 <div class="form-group">
                     <s:textfield cssClass="border border-dark form-control search-field"
                                  cssStyle="border-radius:20px;width: 350px;"

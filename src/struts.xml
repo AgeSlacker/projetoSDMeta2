@@ -76,5 +76,8 @@
             <result name="success">./index.jsp</result>
             <result name="error">./login.jsp</result>
         </action>
+        <action name="shareAction" class="webserver.action.SearchAction" method="shareSearch">
+            <result>./index.jsp</result>
+        </action>
     </package>
 </struts>
