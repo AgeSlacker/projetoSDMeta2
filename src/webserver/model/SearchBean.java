@@ -24,6 +24,7 @@ public class SearchBean {
     private ArrayList<Page> originalResults = new ArrayList<>();
     private boolean translated = false;
     private String searchTerms;
+    private String facebookShareLink = "";
 
     public SearchBean() {
         System.getProperties().put("java.security.policy", "policy.all");
@@ -54,9 +55,25 @@ public class SearchBean {
     public void setSearchTerms(String searchTerms) {
         this.searchTerms = searchTerms.toLowerCase();
         System.out.println("Setting search terms to " + searchTerms);
+
+        // Gerar o link partilhavel
+        String facebookUrl = "https://www.facebook.com/dialog/share";
+        String appId = "2951392934911594";
+        String redirectUri = "http://ucbusca.com:8080/index.action";
+        String href = "http://ucbusca.com:8080/searchResults.action?searchBean.searchTerms=";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(facebookUrl)
+                .append("?appId=" + appId)
+                .append("&display=touch")
+                .append("&redirectUri=" + redirectUri)
+                .append("&href=" + href)
+                .append(searchTerms.replaceAll(" ", "+"));
+        this.facebookShareLink = sb.toString();
     }
 
     public void setSearchResults(String user) throws RemoteException {
+        this.translated = false;
         System.out.println("Setting search results");
         this.searchResults = server.search(null, searchTerms.split(" "), user, 0);
         this.originalResults = this.searchResults;

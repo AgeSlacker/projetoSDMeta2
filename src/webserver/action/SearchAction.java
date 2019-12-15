@@ -41,7 +41,4 @@ public class SearchAction extends BaseAction {
         this.session.put("searchBean", searchBean);
     }
 
-    public String shareSearch() {
-        return SUCCESS;
-    }
 }
