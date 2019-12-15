@@ -20,7 +20,7 @@
     <link rel="shortcut icon" href="assets/img/icon.ico"/>
 </head>
 
-<body>
+<body style="overflow-x: hidden;">
 <nav class="navbar navbar-light navbar-expand-md border-dark border rounded-0 navigation-clean-search"
      style="margin-bottom: 20px;">
     <div class="container"><a class="navbar-brand" style="font-family: 'Cinzel', serif;" href="index.jsp">UCBUSCA</a>
@@ -38,14 +38,7 @@
                 </div>
                 <i class="fa fa-search"
                    style="font-size: 24px;margin-top: -8px;margin-left: 10px;color: rgb(0,0,0);"></i>
-                <c:choose>
-                    <c:when test="${searchBean.translated == true}">
-                        <s:a action="translateOriginal">Voltar ao original</s:a>
-                    </c:when>
-                    <c:otherwise>
-                        <s:a action="translate">Traduzir para portugûes</s:a>
-                    </c:otherwise>
-                </c:choose>
+
             </s:form>
         </div>
         <c:if test="${session.emptySearch == true}">
@@ -54,38 +47,35 @@
         <ul class="nav navbar-nav">
             <c:choose>
                 <c:when test="${session.logged == true}">
-                    <li class="nav-item" role="presentation">
-                        <p class="navbar-text" style="margin-top: 10px;">Welcome <c:out value="${clientBean.name}"/></p>
+                    <li class="nav-item" role="presentation" style="margin-top: 5px;"><a class="nav-link"
+                                                                                         href="index.jsp">Buscar</a>
                     </li>
-                    <li class="nav-item" role="presentation" style="margin-top: 10px;"><a class="nav-link"
-                                                                                          href="index.jsp">Buscar</a>
-                    </li>
-                    <li class="nav-item" role="presentation" style="margin-top: 10px;">
+                    <li class="nav-item" role="presentation" style="margin-top: 5px;">
                         <a class="nav-link" href="<s:url action="getUserHistory"></s:url> ">Histórico</a>
                     </li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="linkedPages.jsp">Páginas
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="linkedPages.jsp">Páginas
                         Linkadas</a></li>
-                    <li class="nav-item" role="presentation" style="margin-top: 10px;">
+                    <li class="nav-item" role="presentation" style="margin-top: 5px;">
                         <a class="nav-link" href="<s:url action="logout"/>">Logout</a>
                     </li>
                     <c:choose>
                         <c:when test="${clientBean.admin}">
-                            <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                                  href="<s:url action="enterAdminPage"/>">ADM</a>
+                            <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                                 href="<s:url action="enterAdminPage"/>">ADM</a>
                             </li>
                         </c:when>
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="index.jsp">Buscar</a>
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="index.jsp">Buscar</a>
                     </li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="login.jsp">Login</a>
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="login.jsp">Login</a>
                     </li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="register.jsp">Registrar</a>
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="register.jsp">Registrar</a>
                     </li>
                 </c:otherwise>
             </c:choose>
@@ -93,6 +83,30 @@
     </div>
     </div>
 </nav>
+
+<div class="row">
+    <div class="col">
+        <div class="float-right" style="margin-right: 200px;">
+            <s:a action="share">
+                <img src="assets/img/compface.png" style="margin-right: 10px; height: 40px;">
+            </s:a>
+            <c:choose>
+                <c:when test="${searchBean.translated == true}">
+                    <s:a action="translateOriginal">
+                        <button class="btn btn-dark"> Voltar para idioma original</button>
+                    </s:a>
+                </c:when>
+                <c:otherwise>
+                    <s:a action="translate">
+                        <button class="btn btn-dark"> Traduzir para português</button>
+                    </s:a>
+                </c:otherwise>
+            </c:choose>
+
+        </div>
+    </div>
+</div>
+
 <div style="margin-left: 50px; max-width: 800px">
     <s:iterator value="searchBean.searchResults">
         <div class="row">

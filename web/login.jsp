@@ -38,9 +38,9 @@
                   cssStyle="border:none; width: 181px;background-color: rgb(0,0,0);margin-top: 25px;"
                   value="Entrar"/>
     </div>
+    <s:a action="loginWithFacebook"><img class="img-responsive" style="width:190px;"
+                                         src="assets/img/fb.png"></s:a><br>
     <a href="register.jsp" style="color: rgb(0,0,0);">Ainda não Possui Conta?</a>
-
-    <s:a action="loginWithFacebook">Login with facebook instead</s:a>
 
 </div>
 </s:form>

@@ -39,8 +39,10 @@
             <s:submit cssStyle="border:none;width: 181px;background-color: rgb(0,0,0);margin-top: 25px;"
                       cssClass="btn btn-dark" value="Registar"></s:submit>
         </div>
+        <s:a action="loginWithFacebook"><img class="img-responsive" style="width:190px;"
+                                             src="assets/img/fb.png"></s:a><br>
+
         <a href="<s:url action="login"/>" style="color: rgb(0,0,0);">Já Possui Conta?</a>
-        <s:a action="loginWithFacebook">Registre-se com o Facebook</s:a>
     </div>
 </s:form>
 <script src="assets/js/jquery.min.js"></script>
