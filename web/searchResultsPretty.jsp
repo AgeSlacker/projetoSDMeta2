@@ -89,9 +89,9 @@
         <div class="float-right" style="margin-bottom: 15px; margin-right: 50px;margin-left: 30px;">
             <div class="row">
                 <div class="col-6">
-                    <s:a action="share">
+                    <a href="<c:out value="${searchBean.facebookShareLink}"></c:out>">
                         <img src="assets/img/compface.png" style="margin-right: 10px; height: 40px;">
-                    </s:a>
+                    </a>
                 </div>
                 <div class="col-6">
                     <c:choose>
