@@ -40,4 +40,5 @@ public class SearchAction extends BaseAction {
     public void setSearchBean(SearchBean searchBean) {
         this.session.put("searchBean", searchBean);
     }
+
 }

@@ -34,7 +34,7 @@
 </div>
 <div class="row">
     <div class="col text-center">
-        <s:form action="searchResults" method="POST">
+        <s:form action="searchResults" method="GET">
             <s:textfield name="searchBean.searchTerms"
                          cssClass="border-dark"
                          cssStyle="min-width:300px;outline: none;padding-left: 20px;margin-top: 20px; width:35%; height:40px;border-radius:20px;"
