@@ -94,7 +94,7 @@ public class SearchBean {
         translatedResults.clear();
         for (Page p : originalResults) {
             String titleLang = getLanguage(p.getName());
-            String newTitle = translateText(p.getName(), "pt") + " [Original em " + titleLang + " ]";
+            String newTitle = translateText(p.getName(), "pt") + "[" + titleLang + "]";
             String descLang = getLanguage(p.getDescription());
             String translatedDescription = translateText(p.getDescription(), "pt");
             System.out.println("Detected lang :" + titleLang + " " + descLang);

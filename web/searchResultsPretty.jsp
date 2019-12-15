@@ -86,23 +86,29 @@
 
 <div class="row">
     <div class="col">
-        <div class="float-right" style="margin-right: 200px;">
-            <s:a action="share">
-                <img src="assets/img/compface.png" style="margin-right: 10px; height: 40px;">
-            </s:a>
-            <c:choose>
-                <c:when test="${searchBean.translated == true}">
-                    <s:a action="translateOriginal">
-                        <button class="btn btn-dark"> Voltar para idioma original</button>
+        <div class="float-right" style="margin-bottom: 15px; margin-right: 50px;margin-left: 30px;">
+            <div class="row">
+                <div class="col-6">
+                    <s:a action="share">
+                        <img src="assets/img/compface.png" style="margin-right: 10px; height: 40px;">
                     </s:a>
-                </c:when>
-                <c:otherwise>
-                    <s:a action="translate">
-                        <button class="btn btn-dark"> Traduzir para português</button>
-                    </s:a>
-                </c:otherwise>
-            </c:choose>
-
+                </div>
+                <div class="col-6">
+                    <c:choose>
+                        <c:when test="${searchBean.translated == true}">
+                            <s:a action="translateOriginal">
+                                <button class="btn btn-dark" style="width: 230px;"> Voltar para idioma original
+                                </button>
+                            </s:a>
+                        </c:when>
+                        <c:otherwise>
+                            <s:a action="translate">
+                                <button class="btn btn-dark" style="width: 200px;"> Traduzir para português</button>
+                            </s:a>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+            </div>
         </div>
     </div>
 </div>
