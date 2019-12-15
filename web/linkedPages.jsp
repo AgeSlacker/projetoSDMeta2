@@ -40,38 +40,35 @@
         <ul class="nav navbar-nav">
             <c:choose>
                 <c:when test="${session.logged == true}">
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation">
-                        <p class="navbar-text" style="">Welcome <c:out value="${clientBean.name}"/></p>
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="index.jsp">Buscar</a>
                     </li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="index.jsp">Buscar</a>
-                    </li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation">
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation">
                         <a class="nav-link" href="<s:url action="getUserHistory"></s:url> ">Histórico</a>
                     </li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="linkedPages.jsp">Páginas
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="linkedPages.jsp">Páginas
                         Linkadas</a></li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation">
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation">
                         <a class="nav-link" href="<s:url action="logout"/>">Logout</a>
                     </li>
                     <c:choose>
                         <c:when test="${clientBean.admin}">
-                            <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                                  href="<s:url action="enterAdminPage"/>">ADM</a>
+                            <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                                 href="<s:url action="enterAdminPage"/>">ADM</a>
                             </li>
                         </c:when>
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="index.jsp">Buscar</a>
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="index.jsp">Buscar</a>
                     </li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="login.jsp">Login</a>
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="login.jsp">Login</a>
                     </li>
-                    <li class="nav-item" style="margin-top: 10px;" role="presentation"><a class="nav-link"
-                                                                                          href="register.jsp">Registrar</a>
+                    <li class="nav-item" style="margin-top: 5px;" role="presentation"><a class="nav-link"
+                                                                                         href="register.jsp">Registrar</a>
                     </li>
                 </c:otherwise>
             </c:choose>
