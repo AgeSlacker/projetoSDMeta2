@@ -40,6 +40,7 @@
                       cssClass="btn btn-dark" value="Registar"></s:submit>
         </div>
         <a href="<s:url action="login"/>" style="color: rgb(0,0,0);">Já Possui Conta?</a>
+        <s:a action="loginWithFacebook">Registre-se com o Facebook</s:a>
     </div>
 </s:form>
 <script src="assets/js/jquery.min.js"></script>

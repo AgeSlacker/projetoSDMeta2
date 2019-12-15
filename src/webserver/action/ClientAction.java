@@ -2,6 +2,8 @@ package webserver.action;
 
 public class ClientAction extends BaseAction {
 
+    private String code = "";
+
     @Override
     public String execute() throws Exception {
         return SUCCESS;
@@ -42,5 +44,22 @@ public class ClientAction extends BaseAction {
     public String loginWithFacebook() {
         getClientBean().doLoginWithFacebook();
         return SUCCESS;
+    }
+
+    public String receiveCode() {
+        System.out.println("Code received...");
+        boolean successful = getClientBean().doVerification();
+        if (successful) {
+            System.out.println("Login with Facebook successful");
+            this.session.put("logged", true);
+            return SUCCESS;
+        } else
+            return ERROR;
+    }
+
+    public void setCode(String code) {
+        System.out.println("Setting code");
+        this.code = code;
+        getClientBean().setVerifyCode(this.code);
     }
 }

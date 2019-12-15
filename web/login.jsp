@@ -40,10 +40,6 @@
     </div>
     <a href="register.jsp" style="color: rgb(0,0,0);">Ainda não Possui Conta?</a>
 
-    <fb:login-button
-            scope="public_profile,email"
-            onlogin="checkLoginState();">
-    </fb:login-button>
     <s:a action="loginWithFacebook">Login with facebook instead</s:a>
 
 </div>

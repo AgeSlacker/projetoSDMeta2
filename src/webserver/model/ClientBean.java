@@ -3,6 +3,9 @@ package webserver.model;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.*;
 import com.github.scribejava.core.oauth.OAuthService;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import rmiserver.*;
 import uc.sd.apis.FacebookApi2;
 import webserver.Configs;
@@ -14,7 +17,6 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import static ws.WebSocket.sockets;
 
@@ -29,6 +31,9 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     private static final Token EMPTY_TOKEN = null;
     WebSocketPusher webSocketPusher = new WebSocketPusher();
     OAuthService service;
+
+    private String authorizationUrl;
+    private String verifyCode;
 
     public ClientBean() throws RemoteException {
         super();
@@ -47,8 +52,8 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
                 .provider(FacebookApi2.class)
                 .apiKey(apiKey)
                 .apiSecret(apiSecret)
-                .callback("http://eden.dei.uc.pt/~fmduarte/echo.php") // Do not change this.
-                .scope("publish_actions")
+                .callback("http://localhost:8080/projetoSDMeta2/receiveCode.action") // Do not change this.
+                .scope("public_profile")
                 .build();
         (new Thread(webSocketPusher)).start();
     }
@@ -177,26 +182,27 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
     }
 
     public void doLoginWithFacebook() {
-
-        Scanner sc = new Scanner(System.in);
         // Obtain the Authorization URL
         System.out.println("Fetching the Authorization URL...");
         String authorizationUrl = service.getAuthorizationUrl(EMPTY_TOKEN);
         System.out.println("Got the Authorization URL!");
         System.out.println("Now go and authorize Scribe here:");
-        System.out.println(authorizationUrl);
-        System.out.println("And paste the authorization code here");
-        System.out.print(">>");
-        Verifier verifier = new Verifier(sc.nextLine());
-        System.out.println();
+        this.authorizationUrl = authorizationUrl;
+    }
 
+    public String getAuthorizationUrl() {
+        return authorizationUrl;
+    }
+
+    public boolean doVerification() {
+        Verifier verifier = new Verifier(this.verifyCode);
+        System.out.println();
         // Trade the Request Token and Verfier for the Access Token
         System.out.println("Trading the Request Token for an Access Token...");
         Token accessToken = service.getAccessToken(EMPTY_TOKEN, verifier);
         System.out.println("Got the Access Token!");
         System.out.println("(if your curious it looks like this: " + accessToken + " )");
         System.out.println();
-
         // Now let's go and ask for a protected resource!
         System.out.println("Now we're going to access a protected resource...");
         OAuthRequest request = new OAuthRequest(Verb.GET, PROTECTED_RESOURCE_URL, service);
@@ -206,11 +212,36 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
         System.out.println();
         System.out.println(response.getCode());
         System.out.println(response.getBody());
-
-
         System.out.println();
-        System.out.println("Thats it man! Go and build something awesome with Scribe! :)");
-        sc.close();
+
+        if (response.getCode() == 200) {
+            // Try to login user
+            JSONParser jsonParser = new JSONParser();
+            try {
+                JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody());
+                this.name = (String) jsonObject.get("name");
+                System.out.println("Name from json:" + this.name);
+                // Security through obfuscation rulezz!
+                this.password = "8uh8unuyb87hhsdaiuhasiud98asu e982e9asj d9masjd oasd89sa9ads";
+                PacketBuilder.RESULT result = server.login(this, name, password);
+                if (result == PacketBuilder.RESULT.ER_NO_USER) {
+                    System.out.println("Need to register first");
+                    server.register(this, name, password);
+                    server.login(this, name, password);
+                    return true;
+                }
+                return true;
+            } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public void setVerifyCode(String code) {
+        this.verifyCode = code;
     }
 
     class WebSocketPusher implements Runnable {

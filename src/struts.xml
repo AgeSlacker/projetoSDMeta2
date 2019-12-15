@@ -70,6 +70,9 @@
             <result>./searchResultsPretty.jsp</result>
         </action>
         <action name="loginWithFacebook" class="webserver.action.ClientAction" method="loginWithFacebook">
+            <result type="redirect">${clientBean.authorizationUrl}</result>
+        </action>
+        <action name="receiveCode" class="webserver.action.ClientAction" method="receiveCode">
             <result name="success">./index.jsp</result>
             <result name="error">./login.jsp</result>
         </action>
