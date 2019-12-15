@@ -51,8 +51,7 @@
                         </thead>
                         <tbody id="pagesTable">
                         <tr>
-                            <td class="text-center">Cell 1</td>
-                            <td class="text-center"><input type="checkbox"></td>
+                            <td>Loading data...</td>
                         </tr>
                         </tbody>
                     </table>
@@ -71,8 +70,7 @@
                         </thead>
                         <tbody id="searchesTable">
                         <tr>
-                            <td class="text-center">Cell 1</td>
-                            <td class="text-center">Cell 2</td>
+                            <td>Loading data...</td>
                         </tr>
                         </tbody>
                     </table>
@@ -86,7 +84,7 @@
                         </thead>
                         <tbody id="multicastServersTable">
                         <tr>
-                            <td>Cell 1</td>
+                            <td>Loading data...</td>
                         </tr>
                         </tbody>
                     </table>

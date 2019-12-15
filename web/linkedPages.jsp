@@ -75,7 +75,7 @@
         </ul>
     </div>
 </nav>
-<div style="margin-left: 50px; max-width: 800px">
+<div style="margin-left: 50px; max-width: 800px; text-align: left;">
     <c:forEach items="${linkedPagesBean.linkList}" var="link">
         <div class="row">
             <div class="col">
