@@ -47,6 +47,9 @@ public class SearchBean {
         return this.translated;
     }
 
+    public String getFacebookShareLink() {
+        return facebookShareLink;
+    }
 
     public String getSearchTerms() {
         return searchTerms;
@@ -59,14 +62,14 @@ public class SearchBean {
         // Gerar o link partilhavel
         String facebookUrl = "https://www.facebook.com/dialog/share";
         String appId = "2951392934911594";
-        String redirectUri = "http://ucbusca.com:8080/index.action";
+        String redirectUri = "http://ucbusca.com/index.action";
         String href = "http://ucbusca.com:8080/searchResults.action?searchBean.searchTerms=";
 
         StringBuilder sb = new StringBuilder();
         sb.append(facebookUrl)
-                .append("?appId=" + appId)
+                .append("?app_id=" + appId)
                 .append("&display=touch")
-                .append("&redirectUri=" + redirectUri)
+                .append("&redirect_uri=" + redirectUri)
                 .append("&href=" + href)
                 .append(searchTerms.replaceAll(" ", "+"));
         this.facebookShareLink = sb.toString();

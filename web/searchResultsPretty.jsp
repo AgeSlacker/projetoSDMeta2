@@ -87,9 +87,9 @@
 <div class="row">
     <div class="col">
         <div class="float-right" style="margin-right: 200px;">
-            <s:a action="share">
+            <a href="<c:out value="${searchBean.facebookShareLink}"></c:out>">
                 <img src="assets/img/compface.png" style="margin-right: 10px; height: 40px;">
-            </s:a>
+            </a>
             <c:choose>
                 <c:when test="${searchBean.translated == true}">
                     <s:a action="translateOriginal">
