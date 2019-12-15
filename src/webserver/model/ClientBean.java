@@ -52,7 +52,7 @@ public class ClientBean extends UnicastRemoteObject implements IClient {
                 .provider(FacebookApi2.class)
                 .apiKey(apiKey)
                 .apiSecret(apiSecret)
-                .callback("http://localhost:8080/projetoSDMeta2/receiveCode.action") // Do not change this.
+                .callback("https://ucbusca.com/receiveCode.action") // Do not change this.
                 .scope("public_profile")
                 .build();
         (new Thread(webSocketPusher)).start();

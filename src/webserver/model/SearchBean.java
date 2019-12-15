@@ -62,8 +62,8 @@ public class SearchBean {
         // Gerar o link partilhavel
         String facebookUrl = "https://www.facebook.com/dialog/share";
         String appId = "2951392934911594";
-        String redirectUri = "http://ucbusca.com/index.action";
-        String href = "http://ucbusca.com:8080/searchResults.action?searchBean.searchTerms=";
+        String redirectUri = "https://ucbusca.com/index.action";
+        String href = "https://ucbusca.com/searchResults.action?searchBean.searchTerms=";
 
         StringBuilder sb = new StringBuilder();
         sb.append(facebookUrl)

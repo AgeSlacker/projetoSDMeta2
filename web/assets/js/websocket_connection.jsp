@@ -5,7 +5,7 @@
 
     var websocket = null;
     window.onload = function () {
-        connect("ws://" + window.location.host + "/projetoSDMeta2/ws");
+        connect("wss://" + window.location.host + "/ws");
     }
 
     function connect(host) { // connect to the host websocket servlet
