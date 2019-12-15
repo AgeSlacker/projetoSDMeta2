@@ -69,5 +69,9 @@
         <action name="translate" class="webserver.action.SearchAction" method="translateResults">
             <result>./searchResultsPretty.jsp</result>
         </action>
+        <action name="loginWithFacebook" class="webserver.action.ClientAction" method="loginWithFacebook">
+            <result name="success">./index.jsp</result>
+            <result name="error">./login.jsp</result>
+        </action>
     </package>
 </struts>

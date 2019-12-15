@@ -97,11 +97,10 @@
     <s:iterator value="searchBean.searchResults">
         <div class="row">
             <div class="col">
-                <div style="margin-bottom: 20px;width: 60%;"><a href="<s:property value="url"></s:property>"><s:property
-                        value="name"></s:property></a> <br>
+                <div style="margin-bottom: 20px;width: 60%;">
+                    <a href="<s:property value="url"></s:property>"><s:property value="name"></s:property></a> <br>
                     <a style="color:green;margin-bottom: 0px;text-decoration: none;"
-                       href="<s:property value="url"></s:property>"><s:property
-                            value="url"></s:property></a>
+                       href="<s:property value="url"></s:property>"><s:property value="url"></s:property></a>
                     <p style="margin-bottom: 9px;"><s:property value="description"></s:property></p>
                 </div>
             </div>

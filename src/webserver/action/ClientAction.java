@@ -39,5 +39,8 @@ public class ClientAction extends BaseAction {
         return SUCCESS;
     }
 
-
+    public String loginWithFacebook() {
+        getClientBean().doLoginWithFacebook();
+        return SUCCESS;
+    }
 }
